@@ -1,6 +1,7 @@
 'use strict';
-module.exports = (sequelize, DataTypes) =>{
-  var Prompt = sequelize.define('prompts', {
+
+module.exports = (sequelize, DataTypes) => {
+  const Prompt = sequelize.define('prompts', {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
