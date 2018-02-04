@@ -1,5 +1,15 @@
 <div id="practice">
   <h1>PRACTICE</h1>
+    <div>
+      <form name="promptOptions">
+        <label for="promptType">Question Type</label>
+        <select
+          name="promptType"
+          ng-options="type.value for type in $ctrl.options.type track by type.id"
+          ng-model="$ctrl.options.selectedType">
+        </select>
+      </form>
+    </div>
   <prompts
     prompts="$ctrl.currentPrompts">
   </prompts>

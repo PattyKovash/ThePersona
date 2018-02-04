@@ -71,4 +71,9 @@ module.exports = [
     question: 'Tell me about a technical challenge you ran into recently.',
     tag: 'technical'
   },
+  {
+    question: 'What is the difference between encryption and hashing?',
+    tag: 'technical'
+  }
 ];
+
