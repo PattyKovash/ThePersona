@@ -25,7 +25,6 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '/../client')));
 app.use(express.static(path.join(__dirname, '/../node_modules')));
 
-
 app.get('/api/users', (req, res) => {
   res.sendStatus(200);
 });
