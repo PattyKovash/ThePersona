@@ -1,6 +1,7 @@
 angular.module('app')
   .controller('interviewCtrl', function () {
-    this.prompts = ['hello!'];
+    this.prompts = [{ id: 0, question: 'Hello!', tag: 'non-technical' }];
+    this.selectedPrompt = this.prompts[0].question;
     this.options = {
       type: [
         { id: 0, name: '', value: '' },

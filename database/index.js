@@ -1,4 +1,5 @@
 const Sequelize = require('sequelize');
+const prompts = require('./prompts');
 let sequelize;
 
 if (process.env.NODE_ENV === 'production') {
@@ -6,7 +7,13 @@ if (process.env.NODE_ENV === 'production') {
 } else {
   sequelize = new Sequelize('persona', 'root', '', {
     host: 'localhost',
-    dialect: 'mysql'
+    dialect: 'mysql',
+    pool: {
+      max: 20,
+      min: 0,
+      acquire: 30000,
+      idle: 5000
+    }
   });
 }
 
@@ -27,6 +34,7 @@ const Answer = sequelize.import('./models/Answer.js');
 const Comment = sequelize.import('./models/Comment.js');
 const Tag = sequelize.import('./models/Tag.js');
 const Vote = sequelize.import('./models/Vote.js');
+const PromptToTag = sequelize.import('./models/PromptToTag');
 
 
 // // FOREIGN KEY CREATION
@@ -61,13 +69,46 @@ Answer.belongsTo(Prompt, {
   onDelete: `CASCADE`,
 });
 
-Tag.belongsTo(Prompt, {
-  targetKey: `id`,
+Prompt.belongsToMany(Tag, {
+  through: PromptToTag,
+  as: 'tags',
+  foreignKey: 'promptID',
+  otherKey: 'tagID',
   constraints: false,
-  onDelete: `CASCADE`,
+  onDelete: 'CASCADE',
 });
 
-sequelize.sync( { force: true } );
+Tag.belongsToMany(Prompt, {
+  through: PromptToTag,
+  as: 'prompts',
+  foreignKey: 'tagID',
+  otherKey: 'promptID',
+  constraints: false,
+  onDelete: 'CASCADE',
+});
+
+sequelize.sync({ force: true })
+  .then(() => {
+    prompts.forEach((prompt) => {
+      return Prompt.findOrCreate({
+        where: { question: prompt.question }
+      })
+        .spread((newPrompt, isPromptCreated) => {
+          console.log('newPrompt:', newPrompt);
+          return prompt.tags.forEach((tag) => {
+            Tag.findOrCreate({
+              where: { tagname: tag }
+            })
+              .spread((newTag, isTagCreated) => {
+                return newTag.addPrompt([newPrompt.id])
+                  .then(() => {
+                    console.log('AAAAHHHHHH');
+                  });
+              });
+          });
+        });
+    });
+  });
 
 const selectAll = (callback) => {
   User.findAll()
@@ -79,6 +120,68 @@ const selectAll = (callback) => {
     });
 };
 
+// const addPrompt = (prompt, callback) => {
+//   Prompt.findOrCreate({
+//     where: { question: prompt.question }
+//   })
+//     .spread((newPrompt, isPromptCreated) => {
+//       if (callback) {
+//         callback(null, newPrompt, isPromptCreated);
+//       }
+//     })
+//     .catch((err) => {
+//       if (callback) {
+//         callback(err);
+//       }
+//     });
+// };
+
+// const addTag = (tag, callback) => {
+//   Tag.findOrCreate({
+//     where: { tagname: tag }
+//   })
+//     .spread((newTag, isTagCreated) => {
+//       if (callback) {
+//         callback(null, newTag, isTagCreated);
+//       }
+//     })
+//     .catch((err) => {
+//       if (callback) {
+//         callback(err);
+//       }
+//     });
+// };
+
+// const addPromptToTag = (prompt, tag, callback) => {
+//   console.log('prompt:', prompt);
+//   console.log('tag:', tag);
+
+
+
+//   Prompt.find({
+//     where: {
+//       question: prompt.question
+//     }
+//   })
+//     .then((foundPrompt) => {
+
+//       Tag.find({
+//         where: {
+//           tagname: tag
+//         }
+//       })
+//         .then((foundTag) => {
+//           foundPrompt.addTag([foundTag.id])
+//             .then(callback)
+//             .catch(callback);
+//         });
+//     })
+//     .catch(callback);
+// };
+
 module.exports.User = User;
 module.exports.selectAll = selectAll;
 module.exports.sequelize = sequelize;
+// module.exports.addPrompt = addPrompt;
+// module.exports.addTag = addTag;
+// module.exports.addPromptToTag = addPromptToTag;

@@ -5,15 +5,14 @@ module.exports = (sequelize, DataTypes) => {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
-      autoIncrement: true,
+      autoIncrement: true
     },
     question: {
       type: DataTypes.TEXT,
-      allowNull: false,
+      allowNull: false
     },
-    createdAt: DataTypes.DATE,
+    createdAt: DataTypes.DATE
   });
-
 
   return Prompt;
 };

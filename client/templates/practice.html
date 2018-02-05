@@ -8,6 +8,12 @@
           ng-options="type.value for type in $ctrl.options.type track by type.id"
           ng-model="$ctrl.options.selectedType">
         </select>
+        <label for="prompts">Select Question(s)</label>
+        <select
+          name="prompts"
+          ng-options="prompt.question for prompt in $ctrl.prompts track by prompt.id"
+          ng-model="$ctrl.selectedPrompt">
+        </select>
       </form>
     </div>
   <prompts
