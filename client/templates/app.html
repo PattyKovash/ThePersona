@@ -1,7 +1,9 @@
 <div id="appContainer">
   <div id="header">
       <h1 class="logo"><a ui-sref="app.home">Persona</a></h1>
-      <div class="generalNav">
+<!--       <div class="generalNav">
+      </div> -->
+      <div class="loginNav">
         <a ui-sref="app.interview.mock">Interview</a>
 <!--           <div class="dropdown">
             <div class="dropdownItem">
@@ -10,8 +12,6 @@
             </div>
           </div> -->
         <a ui-sref="app.community">Community</a>
-      </div>
-      <div class="loginNav">
         <a ng-if="$ctrl.isLoggedin" ui-sref="app.user">My Dashboard</a> <!-- Add ng-if show if isLoggin -->
         <a ng-if="!$ctrl.isLoggedin" ng-click="$ctrl.openComponentModal()" href="#">Login</a> <!-- Add ng-if show if !isLoggin -->
         <a ng-if="$ctrl.isLoggedin" ui-sref="logout">Log Out</a> <!-- Add ng-if show if isLoggin -->
