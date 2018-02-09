@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 const seedPrompts = require('./prompts');
+
 let sequelize;
 
 if (process.env.NODE_ENV === 'production') {

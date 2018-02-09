@@ -1,8 +1,12 @@
-const express = require('express');
-const router = require('express').Router();
-const bodyParser = require('body-parser');
-const path = require('path');
 const db = require('../database');
+const path = require('path');
+const User = require('../database/models/User.js');
+const router = require('express').Router();
+const social = require('./passport/authRoute.js')(app, passport);
+const express = require('express');
+const passport = require('passport');
+const sequelize = require('../database/index.js').sequelize;
+const bodyParser = require('body-parser');
 const toneAnalyzer = require('./helpers/toneAnalyzer');
 const wordAnalyzer = require('./helpers/fillerWords').fillerWords;
 const personalityInsight = require('./helpers/personalityInsight');
@@ -13,15 +17,10 @@ const userData = require('../database/controllers/userData.js');
 const passport = require('passport');
 const social = require('./passport/authRoute.js')(app, passport);
 
-// app.use((req, res, next)=>{
-//   if (req.user) {
-//   debugger;
-//   }
-//   next();
-// });
+const app = express();
 
-app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, '/../client')));
 app.use(express.static(path.join(__dirname, '/../node_modules')));
 
@@ -29,15 +28,15 @@ app.get('/api/users', (req, res) => {
   res.sendStatus(200);
 });
 
-function checkAuthentication (req, res, next) {
+function checkAuthentication(req, res, next) {
   if (req.isAuthenticated()) {
     console.log('You are authenticated!');
     next();
   } else {
-    console.log('You are not Authenticated!')
+    console.log('You are not Authenticated!');
     res.redirect('/#!/login');
   }
-};
+}
 
 
 app.get('/api/dashboard', checkAuthentication, (req, res) => {
