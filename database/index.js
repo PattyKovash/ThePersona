@@ -1,12 +1,17 @@
 const Sequelize = require('sequelize');
 const seedPrompts = require('./prompts');
 
+const NODE_ENV = process.env.NODE_ENV;
 let sequelize;
+let database = 'persona';
 
-if (process.env.NODE_ENV === 'production') {
+if (NODE_ENV === 'production') {
   sequelize = new Sequelize(process.env.CLEARDB_DATABASE_URL);
 } else {
-  sequelize = new Sequelize('persona', 'root', '', {
+  if (NODE_ENV === 'test') {
+    database = 'personaTest';
+  }
+  sequelize = new Sequelize(database, 'root', '', {
     host: 'localhost',
     dialect: 'mysql',
     pool: {
@@ -14,7 +19,8 @@ if (process.env.NODE_ENV === 'production') {
       min: 0,
       acquire: 30000,
       idle: 5000
-    }
+    },
+    logging: false
   });
 }
 
@@ -110,6 +116,12 @@ const findUser = (query, callback) => {
 }; 
 
 module.exports.User = User;
+module.exports.Prompt = Prompt;
+module.exports.Answer = Answer;
+module.exports.Comment = Comment;
+module.exports.Tag = Tag;
+module.exports.Vote = Vote;
+module.exports.PromptToTag = PromptToTag;
 module.exports.selectAll = selectAll;
 module.exports.sequelize = sequelize;
 module.exports.getPrompts = getPrompts;

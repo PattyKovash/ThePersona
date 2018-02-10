@@ -2,7 +2,6 @@ const db = require('../database');
 const path = require('path');
 const User = require('../database/models/User.js');
 const router = require('express').Router();
-const social = require('./passport/authRoute.js')(app, passport);
 const express = require('express');
 const passport = require('passport');
 const sequelize = require('../database/index.js').sequelize;
@@ -18,6 +17,7 @@ const passport = require('passport');
 const social = require('./passport/authRoute.js')(app, passport);
 
 const app = express();
+const social = require('./passport/authRoute.js')(app, passport);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -76,7 +76,10 @@ app.get('/api/prompts', (req, res) => {
 app.post('/api/ibmtone', (req, res) => {
   toneAnalyzer(req.body.data.text)
     .then((tone) => {
-      res.send(tone);
+      res.json(tone);
+    })
+    .catch((err) => {
+      res.status(500).json(err);
     });
 });
 
@@ -89,7 +92,11 @@ app.post('/api/wordanalysis', (req, res) => {
 app.post('/api/insight', (req, res) => {
   personalityInsight(req.body.data.text)
     .then((personality) => {
-      res.send(personality);
+      console.log('PERSONALITY:', personality);
+      res.json(personality);
+    })
+    .catch((err) => {
+      res.status(500).send(err.error);
     });
 });
 
