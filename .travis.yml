@@ -6,14 +6,15 @@ cache:
     - "node_modules"
 script:
   - npm test
+  - npm test-dev
 services:
   - mysql
-test:
-  adapter: mysql2
-  database: persona
-  database: personaTest
-  username: root
-  encoding: utf8
+# test:
+#   adapter: mysql2
+#   database: persona
+#   database: personaTest
+#   username: root
+#   encoding: utf8
 before_install:
   - mysql -e 'CREATE DATABASE persona;'
   - mysql -e 'CREATE DATABASE personaTest;'
