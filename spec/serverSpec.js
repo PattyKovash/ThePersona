@@ -189,3 +189,7 @@ describe('RESTful API interaction with Watson API', () => {
     });
   });
 });
+
+// Tests for authenticated routes
+
+// Tests for Cloudinary route
