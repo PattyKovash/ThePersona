@@ -16,7 +16,7 @@ test:
   encoding: utf8
 before_install:
   - mysql -e 'CREATE DATABASE persona;'
-  - mysql -e 'CREATE DATABASE personaTest'
+  - mysql -e 'CREATE DATABASE personaTest;'
 env:
   global:
     - secure: "iX9WlacrSNmqqCOMH1AO9jf5fEGcMX0VczxOHdALVtbDD/V+mhpTK0pIFVgkwftHDy9cIpY4SkvKmVR9P7d6wDObbPK4TSBBgiTLsjSpeZnmmpymqGZxAyBhAiEt84vD/P1sa41Ui1o5LckhtSAGji4fS87GFcdpqCpi5Zu9x+bJcEGyFIG2moTkp5r3NW3VL8AJiuf+3JT1N/kQfp/+lnnIbojlFhZ9Sd1Hl/AakE7aTzXTWGdrdZ8L+MYHn+aVXzb/yzjLx/z4Ca/XWd6Udz/D+NFJuOjXKNblbET/Vs3ZqxWUFpTz0zcM0FoWnG8tMKYjhqmkf4jzlGE41zzekZkMF6NxBw6NAvamw3VBQa8DYCbQjnzRc0GRDB4jVue2Sf7oJSXJkw9j9FbjmF6CG2I99oMKznOWeuwU1JmMHdbvko8w399taZ/n82mcxwqGVAkyeSaapUKbYeSpCgBZe8Oa8LKIn0mF5isF+RsMFClnJSSpfAwyP60VZfQSkzDnbcZvqJLilefZPd2A0uTNC6B9nAc1YDytC69yFhc+2AXrBvGePPS4JkxhQl6ByBqgSjqFuwmzcCkPs4KgtNhe2BXqteLxFHD9BN2ZyIMXDtVQrw4iGShQi3MfTyh882KQZzlBndH0LyDxSie1Z1+ee9f3rjZdJCncCZshH6AMKRg="
