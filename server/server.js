@@ -92,7 +92,6 @@ app.post('/api/wordanalysis', (req, res) => {
 app.post('/api/insight', (req, res) => {
   personalityInsight(req.body.data.text)
     .then((personality) => {
-      console.log('PERSONALITY:', personality);
       res.json(personality);
     })
     .catch((err) => {

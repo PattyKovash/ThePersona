@@ -4,8 +4,8 @@ const PersonalityInsightV3 = require('watson-developer-cloud/personality-insight
 module.exports = function analyzePersonality (input) {
   return new Promise((resolve, reject) => {
     const personality = new PersonalityInsightV3({
-      username: process.env.WATSON_USERNAME,
-      password: process.env.WATSON_PASSWORD,
+      username: process.env.WATSON_PERSONALITY_USERNAME,
+      password: process.env.WATSON_PERSONALITY_PASSWORD,
       version_date: '2017-10-13',
     });
 

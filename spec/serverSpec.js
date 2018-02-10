@@ -19,20 +19,8 @@ const expect = chai.expect;
 chai.use(chaiHttp);
 
 describe('RESTful API interaction with database', () => {
-  let testSequel;
 
   beforeEach((done) => {
-    // testSequel = new Sequelize('personaTest', 'root', null, {
-    //   host: 'localhost',
-    //   dialect: 'mysql',
-    //   pool: {
-    //     max: 10,
-    //     min: 0,
-    //     acquire: 3000,
-    //     idle: 5000
-    //   }
-    // });
-
     db.sequelize.sync({ force: true })
       .then(() => {
         db.Prompt.bulkCreate(seedPrompts.prompts);
@@ -182,7 +170,10 @@ describe('RESTful API interaction with Watson API', () => {
             analysis.should.have.property('word_count');
             analysis.should.have.property('processed_language');
             analysis.should.have.property('personality');
-
+            analysis.should.have.property('needs');
+            analysis.should.have.property('values');
+            analysis.should.have.property('consumption_preferences');
+            analysis.should.have.property('warnings');
             analysis.personality.should.be.a('array');
             analysis.personality[0].should.have.property('trait_id');
             analysis.personality[0].should.have.property('name');
@@ -191,8 +182,7 @@ describe('RESTful API interaction with Watson API', () => {
             analysis.personality[0].should.have.property('raw_score');
             analysis.personality[0].should.have.property('significant');
             analysis.personality[0].should.have.property('children');
-
-            analysis.personality.children.should.be.a('array');
+            analysis.personality[0].children.should.be.a('array');
             done();
           });
       });
