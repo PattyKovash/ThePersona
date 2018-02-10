@@ -24,6 +24,16 @@ if (NODE_ENV === 'production') {
   });
 }
 
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log('Database successfully connected!');
+  })
+  .catch((err) => {
+    console.error('Unable to connect to the database:', err);
+    throw err;
+  });
+
 // INITIALIZE TABLES
 
 const User = sequelize.import('./models/User.js');
@@ -67,24 +77,14 @@ Answer.belongsTo(Prompt, {
   onDelete: `CASCADE`,
 });
 
-sequelize
-  .authenticate()
+sequelize.sync({ force: true })
   .then(() => {
-    console.log('Database successfully connected!');
-    sequelize.sync({ force: true })
-      .then(() => {
-        Prompt.bulkCreate(seedPrompts.prompts);
-      })
-      .catch((err) => {
-        console.error('Unable to create prompts:', err);
-        throw err;
-      });
+    Prompt.bulkCreate(seedPrompts.prompts);
   })
   .catch((err) => {
-    console.error('Unable to connect to the database:', err);
+    console.error('Unable to create prompts:', err);
     throw err;
   });
-
 
 const selectAll = (callback) => {
   User.findAll()
