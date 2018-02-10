@@ -19,11 +19,10 @@ const expect = chai.expect;
 chai.use(chaiHttp);
 
 describe('RESTful API interaction with database', () => {
-
   beforeEach((done) => {
     db.sequelize.sync({ force: true })
       .then(() => {
-        db.Prompt.bulkCreate(seedPrompts.prompts);
+        return db.Prompt.bulkCreate(seedPrompts.prompts);
       })
       .then(() => done())
       .catch((err) => {

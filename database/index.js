@@ -20,7 +20,7 @@ if (NODE_ENV === 'production') {
       acquire: 30000,
       idle: 5000
     },
-    // logging: false
+    logging: false
   });
 }
 
