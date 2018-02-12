@@ -20,7 +20,7 @@ if (NODE_ENV === 'production') {
       acquire: 30000,
       idle: 5000
     },
-    // logging: false
+    logging: false
   });
 }
 
@@ -105,15 +105,15 @@ const getPrompts = (query, callback) => {
 };
 
 const findUser = (query, callback) => {
-  User.find( {
+  User.find({
     where: {
       email: query
     }
   })
-  .then((found) => {
-    if (callback) {callback(null,found)};
-  })
-  .catch(callback);
+    .then((found) => {
+      if (callback) { callback(null, found); }
+    })
+    .catch(callback);
 };
 
 module.exports.User = User;
@@ -126,4 +126,5 @@ module.exports.PromptToTag = PromptToTag;
 module.exports.selectAll = selectAll;
 module.exports.sequelize = sequelize;
 module.exports.getPrompts = getPrompts;
+module.exports.findUser = findUser;
 

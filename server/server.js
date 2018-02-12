@@ -72,9 +72,10 @@ app.post('/api/ibmtone', (req, res) => {
   toneAnalyzer(req.body.data.text)
     .then((tone) => {
       const toneResults = JSON.parse(tone);
-      res.send(toneResults);
+      res.status(200).send(toneResults);
     })
     .catch((err) => {
+      console.log('IM ERRORING OUT!!!!!!!!!');
       res.status(500).json(err);
     });
 });

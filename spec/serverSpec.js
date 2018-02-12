@@ -135,7 +135,7 @@ describe('RESTful API interaction with Watson API', () => {
             if (err) {
               console.log('ERROR', err);
             }
-
+            console.log('RES.BODY IN TEST=========', res.body);
             res.should.have.status(200);
             res.body.should.be.a('object');
             res.body.should.have.property('document_tone');
@@ -199,6 +199,8 @@ describe('RESTful API interaction with Watson API', () => {
   //   });
   // });
 });
+
+process.env.NODE_ENV = undefined;
 
 // Tests for authenticated routes
 
