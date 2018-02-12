@@ -68,19 +68,19 @@ Answer.belongsTo(Prompt, {
   onDelete: `CASCADE`,
 });
 
-sequelize
-  .authenticate()
-  .then(() => {
-    console.log('Database successfully connected!');
-    // return sequelize.sync({ force: true });
-  })
-  .then(() => {
-    // return Prompt.bulkCreate(seedPrompts.prompts);
-  })
-  .catch((err) => {
-    console.error('Unable to connect to the database:', err);
-    throw err;
-  });
+// sequelize
+//   .authenticate()
+//   .then(() => {
+//     console.log('Database successfully connected!');
+//     // return sequelize.sync({ force: true });
+//   })
+//   .then(() => {
+//     // return Prompt.bulkCreate(seedPrompts.prompts);
+//   })
+//   .catch((err) => {
+//     console.error('Unable to connect to the database:', err);
+//     throw err;
+//   });
 
 const selectAll = (callback) => {
   User.findAll()

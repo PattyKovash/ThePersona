@@ -2,13 +2,14 @@
 require('dotenv').config();
 process.env.NODE_ENV = 'test';
 
+// Server
+const server = require('../server/server.js');
+
 // DB
 const db = require('../database/index.js');
 const seedPrompts = require('../database/prompts.js');
 const Sequelize = require('sequelize');
 
-// Server
-const server = require('../server/server.js');
 
 // Testing
 const chai = require('chai');

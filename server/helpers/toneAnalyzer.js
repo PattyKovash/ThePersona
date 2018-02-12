@@ -2,9 +2,6 @@ const Promise = require('bluebird');
 const ToneAnalyzerV3 = require('watson-developer-cloud/tone-analyzer/v3');
 
 module.exports = function analyzeInput(input) {
-  console.log('ENV WATSON_USERNAME: ', process.env.WATSON_USERNAME);
-  console.log('ENV WATSON_PASSWORD: ', process.env.WATSON_PASSWORD);
-
   return new Promise((resolve, reject) => {
     const request = new ToneAnalyzerV3({
       username: process.env.WATSON_USERNAME,
