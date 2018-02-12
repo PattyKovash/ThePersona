@@ -22,11 +22,11 @@ describe('RESTful API interaction with database', () => {
   beforeEach((done) => {
     db.sequelize.sync({ force: true })
       .then(() => {
-        db.Prompt.bulkCreate(seedPrompts.prompts);
+        return db.Prompt.bulkCreate(seedPrompts.prompts);
       })
       .then(() => done())
       .catch((err) => {
-        throw err;
+        console.log('ERROR', err);
       });
   });
 
@@ -48,7 +48,7 @@ describe('RESTful API interaction with database', () => {
             done();
           })
           .catch((err) => {
-            throw err;
+            console.log('ERROR', err);
           });
       });
     });
@@ -62,7 +62,7 @@ describe('RESTful API interaction with database', () => {
           .query({ tags: 'all' })
           .end((err, res) => {
             if (err) {
-              throw err;
+              console.log(err);
             } else {
               const resultLen = res.body.length;
               res.should.have.status(200);
@@ -82,7 +82,7 @@ describe('RESTful API interaction with database', () => {
           .query({ tags: 'non-technical' })
           .end((err, res) => {
             if (err) {
-              throw err;
+              console.log('ERROR', err);
             } else {
               res.should.have.status(200);
               res.body.should.be.a('array');
@@ -101,7 +101,7 @@ describe('RESTful API interaction with database', () => {
           .query({ tags: 'technical' })
           .end((err, res) => {
             if (err) {
-              throw err;
+              console.log('ERROR', err);
             } else {
               res.should.have.status(200);
               res.body.should.be.a('array');
@@ -131,7 +131,7 @@ describe('RESTful API interaction with Watson API', () => {
           .send({ data: sampleText })
           .end((err, res) => {
             if (err) {
-              throw err;
+              console.log('ERROR', err);
             }
             const analysis = JSON.parse(res.body);
             const documentAnalysis = analysis.document_tone;
@@ -160,7 +160,7 @@ describe('RESTful API interaction with Watson API', () => {
           .end((err, res) => {
             if (err) {
               console.error(`ERROR: ${err.response.error.text}`);
-              throw err;
+              console.log('ERROR', err);
             }
             const analysis = JSON.parse(res.body);
             res.should.have.status(200);

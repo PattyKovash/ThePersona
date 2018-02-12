@@ -118,7 +118,7 @@ const findUser = (query, callback) => {
     if (callback) {callback(null,found)};
   })
   .catch(callback);
-}; 
+};
 
 module.exports.User = User;
 module.exports.Prompt = Prompt;
@@ -130,8 +130,4 @@ module.exports.PromptToTag = PromptToTag;
 module.exports.selectAll = selectAll;
 module.exports.sequelize = sequelize;
 module.exports.getPrompts = getPrompts;
-module.exports.Answer = Answer;
-module.exports.Prompt = Prompt;
-module.exports.Comment = Comment;
-module.exports.Tag = Tag;
-module.exports.Vote = Vote;
+
