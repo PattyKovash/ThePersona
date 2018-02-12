@@ -1,7 +1,7 @@
 'use strict';
 
-module.exports = (sequelize, DataTypes) =>{
-  var User = sequelize.define('users', {
+module.exports = (sequelize, DataTypes) => {
+  const User = sequelize.define('users', {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -38,17 +38,12 @@ module.exports = (sequelize, DataTypes) =>{
     googleUserId: {
       type: DataTypes.STRING,
       allowNull: true
-    },
-
-
+    }
   });
 
-  
-  User.associate = function(models) {
+  User.associate = function (models) {
     models.User.hasMany(models.Prompt);
   };
-
-
 
   return User;
 };

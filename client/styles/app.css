@@ -1,0 +1,121 @@
+a, abbr, acronym, address, applet, b, big, blockquote, body, button, caption, center, cite, code, dd, del, dfn, div, dl, dt, em, fieldset, font, footer, form, h1, h2, h3, h4, h5, h6, header, html, i, iframe, img, ins, kbd, label, legend, li, nav, object, ol, p, pre, q, s, samp, section, small, span, strike, strong, sub, sup, table, tbody, td, tfoot, th, thead, title, tr, tt, u, ul, var {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  vertical-align: baseline;
+  background: transparent;
+  color: #494949;
+  outline: none;
+  -moz-outline-style: none;
+}
+
+body {
+  background: #f4f4f4;
+  font: 400 1em 'Nunito Sans', sans-serif;
+  color: #494949;
+}
+
+h1 {
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+a, a:hover, a:active, a:focus {
+  text-decoration: none;
+  color: #595959;
+  font-size: 1.2em;
+  outline: none;
+  -moz-outline-style: none;
+  padding-bottom: 8px;
+}
+
+#appContainer {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  margin: auto;
+}
+
+#header {
+  background: #fff;
+  padding: 15px 30px 60px 15px;
+  list-style: none;
+}
+
+.generalNav {
+  float: right;
+  display: inline-block;
+  margin-top: 10px;
+  font-size: .85em;
+  text-align: center;
+}
+
+.generalNav a {
+  margin: 10px 0 0 20px;
+  font-size: 1.2em;
+  text-transform: uppercase;
+}
+
+.generalNav a:hover,
+.generalNav a:visited,
+.generalNav a:focus,
+.dropdown:hover .drop,
+.generalNav a.active {
+  border-bottom: 2px solid #13ed9a; /* #13ed9a*/
+}
+
+a:focus.login {
+  border-bottom: none;
+}
+
+.dropdown {
+  display: none;
+  display: inline-block;
+}
+
+.dropdownContent {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  min-width: 160px;
+  box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.1);
+  margin-left: 15px;
+  z-index: 1;
+}
+
+.dropdownContent a {
+  display: block;
+  text-decoration: none;
+  text-align: left;
+}
+
+.dropdownContent a:hover {
+  color: #1ed992;
+  border-bottom: none;
+}
+
+.dropdownContent a:focus {
+  border-bottom: none;
+}
+
+.dropdown:hover .dropdownContent {
+  display: block;
+}
+
+.logo {
+  display: inline-block;
+  text-align: center;
+  float: left;
+}
+
+h1.logo {
+  left: 100px;
+  font-weight: 400;
+  font-size: 2em;
+}
+
+.logo a:active, .logo a:visited {
+  text-decoration: none;
+  color: #494949;
+}
+

@@ -1,0 +1,61 @@
+#user {
+  margin: auto;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  font: 400 1em 'Nunito Sans', sans-serif;
+  color: #626262;
+}
+
+.pusher.dashboardBody {
+  background-color: #e8ebef;
+  /*background-color: #f0f0f0;*/
+}
+
+.profile {
+  text-align: center;
+  margin: 20px 20px 60px 20px;
+}
+
+#user h3 {
+  font: 400 1.1em 'Nunito Sans', sans-serif;
+  color: #878788;
+}
+
+.profile h3 {
+  letter-spacing: 1px;
+}
+
+.profile img {
+  margin-bottom: 15px;
+}
+
+.ui.vertical.sticky.menu {
+  float: left;
+  height: 100%;
+  display: inline-block;
+  width: 20%;
+  min-width: 215px;
+  max-width: 260px;
+  text-align: left;
+  margin-bottom: 0;
+  background: rgba(255,255,255,.75);
+  border-top: none;
+}
+
+.ui.vertical.sticky.menu.dashboardMenu a.item {
+  padding-left: 15%;
+  padding-right: 15%;
+  color: #626262;
+}
+
+.ui.vertical.sticky.menu.dashboardMenu a:hover.item,
+.ui.vertical.sticky.menu.dashboardMenu a:focus.item,
+.ui.vertical.sticky.menu.dashboardMenu a.item.activeSub {
+  border-left: 8px solid #13ed9a;
+  padding-left: 12%;
+}
+
+.ui.vertical.sticky.menu.dashboardMenu i {
+  float: left;
+  margin-right: 3%;

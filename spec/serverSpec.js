@@ -108,3 +108,4 @@ describe('RESTful API interaction with database', () => {
 });
 
 process.env.NODE_ENV = undefined;
+

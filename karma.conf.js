@@ -36,6 +36,7 @@ module.exports = function (config) {
       '../node_modules/angular-chart.js/dist/angular-chart.min.js',
       '../node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js',
       '../node_modules/angular-animate/angular-animate.js',
+      '../node_modules/phantomjs-polyfill/bind-polyfill.js',
       '../spec/lib/chai.js',
       'index.js',
       '**/*.js',
@@ -50,7 +51,7 @@ module.exports = function (config) {
       'karma-chrome-launcher',
       'karma-ng-html2js-preprocessor',
       'karma-phantomjs-launcher',
-      'karma-phantomjs2-launcher'
+      'karma-phantomjs2-launcher',
     ],
 
     // list of files to exclude
@@ -81,11 +82,11 @@ module.exports = function (config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome'],
+    browsers: ['ChromeHeadless'],
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false,
+    singleRun: true,
 
     // Concurrency level
     // how many browser should be started simultaneous
