@@ -1,5 +1,4 @@
 const Sequelize = require('sequelize');
-const seedPrompts = require('./prompts');
 
 const NODE_ENV = process.env.NODE_ENV;
 let sequelize;
@@ -24,17 +23,15 @@ if (NODE_ENV === 'production') {
   });
 }
 
-
 // INITIALIZE TABLES
 
 const User = sequelize.import('./models/User.js');
-const Prompt = sequelize.import('./models/Prompt.js');
 const Answer = sequelize.import('./models/Answer.js');
+const Prompt = sequelize.import('./models/Prompt.js');
 const Comment = sequelize.import('./models/Comment.js');
 const Tag = sequelize.import('./models/Tag.js');
 const Vote = sequelize.import('./models/Vote.js');
 const PromptToTag = sequelize.import('./models/PromptToTag');
-
 
 // // FOREIGN KEY CREATION
 
@@ -67,20 +64,6 @@ Answer.belongsTo(Prompt, {
   constraints: false,
   onDelete: `CASCADE`,
 });
-
-// sequelize
-//   .authenticate()
-//   .then(() => {
-//     console.log('Database successfully connected!');
-//     // return sequelize.sync({ force: true });
-//   })
-//   .then(() => {
-//     // return Prompt.bulkCreate(seedPrompts.prompts);
-//   })
-//   .catch((err) => {
-//     console.error('Unable to connect to the database:', err);
-//     throw err;
-//   });
 
 const selectAll = (callback) => {
   User.findAll()
@@ -116,15 +99,20 @@ const findUser = (query, callback) => {
     .catch(callback);
 };
 
-module.exports.User = User;
-module.exports.Prompt = Prompt;
+
+module.exports.sequelize = sequelize;
+
+// Models
 module.exports.Answer = Answer;
 module.exports.Comment = Comment;
-module.exports.Tag = Tag;
-module.exports.Vote = Vote;
+module.exports.Prompt = Prompt;
 module.exports.PromptToTag = PromptToTag;
-module.exports.selectAll = selectAll;
-module.exports.sequelize = sequelize;
-module.exports.getPrompts = getPrompts;
+module.exports.Tag = Tag;
+module.exports.User = User;
+module.exports.Vote = Vote;
+
+// Query Functions
 module.exports.findUser = findUser;
+module.exports.getPrompts = getPrompts;
+module.exports.selectAll = selectAll;
 

@@ -39,7 +39,7 @@ app.get('/api/dashboard', checkAuthentication, (req, res) => {
 });
 
 app.get('/data/user', checkAuthentication, (req, res) => {
-  let lookUp = req.user.dataValues.email;
+  const lookUp = req.user.dataValues.email;
   console.log('this is the incoming request', req.user);
   console.log('this is the session ID', req.session);
   userData.userByEmail(lookUp, (err, results) => {
@@ -50,7 +50,7 @@ app.get('/data/user', checkAuthentication, (req, res) => {
       console.log('these are the callback results', results);
       res.status(200).json(results);
     }
-  })
+  });
 });
 
 app.get('/api/prompts', (req, res) => {
@@ -75,7 +75,6 @@ app.post('/api/ibmtone', (req, res) => {
       res.status(200).send(toneResults);
     })
     .catch((err) => {
-      console.log('IM ERRORING OUT!!!!!!!!!');
       res.status(500).json(err);
     });
 });
