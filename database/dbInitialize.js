@@ -1,4 +1,4 @@
-const db = require('./dbInitialize.js');
+const db = require('./index.js');
 const seedPrompts = require('./prompts');
 
 db.sequelize

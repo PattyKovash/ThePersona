@@ -7,7 +7,8 @@
     "start": "node server/index.js",
     "server-dev": "nodemon --inspect -r dotenv/config server/index.js",
     "test-dev": "karma start",
-    "test": "mocha spec/serverSpec.js --exit"
+    "test": "mocha spec/serverSpec.js --exit",
+    "initdb": "nodemon --inspect database/dbInitialize.js"
   },
   "engines": {
     "node": "8.9.1"
