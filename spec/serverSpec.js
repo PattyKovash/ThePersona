@@ -20,6 +20,7 @@ chai.use(chaiHttp);
 
 describe('RESTful API interaction with database', () => {
   beforeEach((done) => {
+    console.log('BEFORE EACH STARTED=====');
     db.sequelize.sync({ force: true })
       .then(() => {
         return db.Prompt.bulkCreate(seedPrompts.prompts);

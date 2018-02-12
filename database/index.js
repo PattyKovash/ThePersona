@@ -24,15 +24,6 @@ if (NODE_ENV === 'production') {
   });
 }
 
-sequelize
-  .authenticate()
-  .then(() => {
-    console.log('Database successfully connected!');
-  })
-  .catch((err) => {
-    console.error('Unable to connect to the database:', err);
-    throw err;
-  });
 
 // INITIALIZE TABLES
 
@@ -77,12 +68,17 @@ Answer.belongsTo(Prompt, {
   onDelete: `CASCADE`,
 });
 
-sequelize.sync({ force: true })
+sequelize
+  .authenticate()
   .then(() => {
-    Prompt.bulkCreate(seedPrompts.prompts);
+    console.log('Database successfully connected!');
+    // return sequelize.sync({ force: true });
+  })
+  .then(() => {
+    // return Prompt.bulkCreate(seedPrompts.prompts);
   })
   .catch((err) => {
-    console.error('Unable to create prompts:', err);
+    console.error('Unable to connect to the database:', err);
     throw err;
   });
 
