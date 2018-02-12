@@ -9,12 +9,7 @@ const bodyParser = require('body-parser');
 const toneAnalyzer = require('./helpers/toneAnalyzer');
 const wordAnalyzer = require('./helpers/fillerWords').fillerWords;
 const personalityInsight = require('./helpers/personalityInsight');
-const app = express();
-const sequelize = require('../database/index.js').sequelize;
-const User = require('../database/index.js').User;
 const userData = require('../database/controllers/userData.js');
-const passport = require('passport');
-const social = require('./passport/authRoute.js')(app, passport);
 
 const app = express();
 const social = require('./passport/authRoute.js')(app, passport);
