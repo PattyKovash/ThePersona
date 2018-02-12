@@ -13,7 +13,6 @@ describe('App Component', function () {
     element = angular.element('<app></app>');
     element = $compile(element)(scope);
     $rootScope.$digest();
-    console.log(element);
   }));
 
   it('should render', () => {

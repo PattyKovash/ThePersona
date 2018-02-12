@@ -1,6 +1,40 @@
 <div id="user">
-  <h1>YOUR DASHBOARD</h1>
-  <button class="large ui button"><a ui-sref="app.interview.practice">Practice</a></button>
-  <button class="large ui button"><a ui-sref="app.interview.mock">Mock Interview</a></button>
-  <button class="large ui button"><a ui-sref="app.community">Community</a></button>
+  <div class="ui bottom attached segment pushable">
+    <div class="ui vertical sticky menu dashboardMenu">
+      <div class="profile">
+        <div class="image">
+          <img src="../images/patty2.png">
+        </div>
+        <h3>{{ $ctrl.userData.name }}</h3>
+        <h3>{{ $ctrl.userData.email }}</h3>
+      </div>
+      <a
+        id="/user/dashboard"
+        ui-sref="app.user.dashboard"
+        class="item activeSub"
+        ng-click="$ctrl.removeActiveSub($event)">
+        <i class="bar chart icon"></i>
+        Dashboard
+      </a>
+      <a
+        id="/user/interviews"
+        ui-sref="app.user.interviews"
+        class="item"
+        ng-click="$ctrl.removeActiveSub($event)">
+        <i class="block layout icon"></i>
+        Interviews
+      </a>
+      <a
+        id="#"
+        class="item"
+        ui-sref="app.interview.mock"
+        ng-click="$ctrl.removeActiveSub($event)">
+        <i class="comment outline icon"></i>
+        Mock Interview
+      </a>
+    </div>
+    <div class="pusher dashboardBody">
+      <ui-view></ui-view>
+    </div>
+  </div>
 </div>

@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = (sequelize, Sequelize) => {
-  var Comment = sequelize.define('comments', {
+  const Comment = sequelize.define('comments', {
     id: {
       type: Sequelize.INTEGER,
       primaryKey: true,
@@ -12,7 +12,6 @@ module.exports = (sequelize, Sequelize) => {
       allowNull: false
     }
   });
-
 
   return Comment;
 };

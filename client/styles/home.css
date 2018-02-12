@@ -1,0 +1,69 @@
+/* Header */
+.ui.container.header-image{
+  height: calc(60vh);
+  width: 100%;
+  flex: 1 0 auto;
+  background: url("../images/header2.jpg") no-repeat;
+  background-size: 100%;
+  background-position: 50% 50%;
+  margin-bottom: 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.header-message {
+  margin: 10% 0 5% 5%;
+  width: 55%;
+}
+
+a:hover.ui.huge.primary.button {
+  background-color: #05386b;
+  opacity: .9;
+  filter: alpha(opacity=90);
+}
+
+/* Footer */
+.ui.footer.segment {
+  width: 100%;
+  margin-bottom: 0;
+  background-color: #0f2d37;
+  max-height: 300px;
+  text-align: center;
+  padding-top: 25px;
+  padding-bottom: 20px;
+}
+
+.ui.divided.grid {
+  margin: auto;
+  max-width: 75%;
+}
+
+.four.wide.column {
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+}
+
+h2.four.wide.column, h3.four.wide.column {
+  font-family: 'Raleway', sans-serif;
+}
+
+h2.ui.inverted.header, h3.ui.inverted.header{
+  font-family: 'Roboto', helvetica, sans-serif;
+}
+
+h2.ui.inverted.header {
+  font-size: 1.4em;
+  margin-bottom: 5px;
+  letter-spacing: 2px;
+}
+
+h3.ui.inverted.header {
+  font-size: 1.2em;
+  margin-top: 0;
+}
+
+
+.ui.footer.basic.segment p {
+  margin-top: 40px;
+}
+

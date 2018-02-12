@@ -10,7 +10,7 @@ const sequelizeStore = require('express-sequelize-session')(session.Store);
 var secret = 'starwars';
 
 module.exports = function (app, passport) {
-  app.use(session({ 
+  app.use(session({
     secret: 'darkside'
   }));
   app.use(passport.initialize());
@@ -19,7 +19,6 @@ module.exports = function (app, passport) {
   passport.serializeUser(function (user, done) {
     done(null, user.id);
   });
-
 
   passport.deserializeUser(function(id, done) {
     User.find({ where: {id: id}}).then((user) => {
@@ -43,22 +42,22 @@ module.exports = function (app, passport) {
   (accessToken, refreshToken, profile, done) => {
     User.find({ where: { email: profile.emails[0].value } })
       .then((user) => {
-      if (!user) {
-        User.create({
-          name: profile._json.name || '',
-          email: profile.emails[0].value,
-          username: profile.name.givenName || '',
-          provider: 'facebook',
-          facebookUserId: profile.id
-        }).then((u)=> {
-          done(null, u);
-        })
-      } else {
-        done(null, user);
-      }
-    }).catch((err) => {
-      done(err, null);
-    });
+        if (!user) {
+          User.create({
+            name: profile._json.name || '',
+            email: profile.emails[0].value,
+            username: profile.name.givenName || '',
+            provider: 'facebook',
+            facebookUserId: profile.id
+          }).then((u) => {
+            done(null, u);
+          });
+        } else {
+          done(null, user);
+        }
+      }).catch((err) => {
+        done(err, null);
+      });
   }
   ));
 

@@ -1,21 +1,49 @@
 <div id="appContainer">
   <div id="header">
-      <h1 class="logo"><a ui-sref="app.home">Persona</a></h1>
+      <h1 class="logo">
+        <a
+          id="/home"
+          ui-sref="app.home"
+          ng-click="$ctrl.removePrevActiveOnClick()">
+        Persona
+        </a>
+      </h1>
       <div class="generalNav">
-        <a ui-sref="app.interview">Interview</a>
           <div class="dropdown">
-            <div class="dropdownItem">
+            <a
+              id="/interview"
+              ui-sref="app.interview"
+              class="drop"
+              ng-click="$ctrl.removePrevActiveOnClick()">
+            Interview</a>
+            <div class="dropdownContent">
               <a ui-sref="app.interview.practice">Practice</a>
               <a ui-sref="app.interview.mock">Mock Interview</a>
             </div>
           </div>
-        <a ui-sref="app.community">Community</a>
-      </div>
-      <div class="loginNav">
-        <a ng-if="$ctrl.isLoggedin" ui-sref="app.user">My Dashboard</a>
-        <a ng-if="!$ctrl.isLoggedin" ng-click="$ctrl.openComponentModal()" href="#">Login</a>
-        <a ng-if="$ctrl.isLoggedin" ui-sref="logout">Log Out</a>
+        <a
+          id="/community"
+          ui-sref="app.community"
+          ng-click="$ctrl.removePrevActiveOnClick()">
+        Community</a>
+        <a
+          id="/user/dashboard"
+          ng-if="$ctrl.isLoggedIn"
+          ui-sref="app.user.dashboard"
+          ng-click="$ctrl.removePrevActiveOnClick()">
+        My Dashboard</a>
+        <a
+          ng-if="!$ctrl.isLoggedIn"
+          ng-click="$ctrl.openComponentModal()"
+          href="#"
+          class="login">
+        Login</a>
+        <a
+          ng-if="$ctrl.isLoggedIn"
+          ui-sref="logout"
+          class="login">
+        Log Out</a>
       </div>
   </div>
-  <ui-view></ui-view>
 </div>
+<ui-view></ui-view>

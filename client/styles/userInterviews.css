@@ -1,0 +1,48 @@
+#intTable {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background-color: #f4f4f4;
+  color: #3e75c8;
+}
+
+table.ui.padded.selectable.column.table,
+.ui.padded.selectable.column.table th,
+.ui.padded.selectable.column.table thead,
+.ui.padded.selectable.column.table tbody,
+.ui.padded.selectable.column.table td {
+  color: #626262;
+  font: 1em 'Nunito Sans', sans-serif;
+  border-top: none;
+  border-left: none;
+}
+
+table.ui.padded.selectable.column.table {
+  box-shadow: 0px 3px 20px 0px rgba(0, 0, 0, 0.1);
+}
+
+.ui.padded.selectable.column.table th {
+  font-size: 1.1em;
+  text-transform: uppercase;
+}
+
+.ui.padded.selectable.column.table tbody,
+.ui.padded.selectable.column.table td {
+  border: none;
+}
+
+.ui.padded.selectable.column.table th, #intTable tbody tr:nth-child(even) {
+  background-color: #f2f7f6;
+}
+
+.ui.padded.selectable.column.table td a:hover {
+  color: #0857a6;
+}
+
+#intTable button i.large.remove.circle.icon {
+  color: #8b4444;
+}
+
+#intTable button i.large.download.icon {
+  color: #626262;
+}

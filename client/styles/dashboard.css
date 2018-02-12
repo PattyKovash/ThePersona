@@ -1,0 +1,58 @@
+.nine.wide.column, .three.column.row .column {
+/*  background: #fff;
+  opacity: .85;
+  filter: alpha(opacity=85);*/
+  background: rgba(255, 255, 255, .85);
+  box-shadow: 0px 3px 20px 0px rgba(0, 0, 0, 0.1);
+}
+
+.nine.wide.column {
+  margin: 50px 4.5% auto 4.5%;
+  height: calc(40vh);
+}
+
+.ui.three.column.stackable.row {
+  margin: 50px 3% auto 3%;
+  height: calc(30vh);
+}
+
+.three.column.row .column {
+  margin: auto;
+  height: calc(30vh);
+  width: 30%;
+  display: inline-block;
+  text-align: center;
+}
+
+.columnContainer {
+  top: 50%;
+  transform: translateY(-56%);
+  position: relative;
+  font-size: 1.1em;
+}
+
+h1.numberStats {
+  background: #4ccbab;
+  background: -moz-linear-gradient(-45deg, #4ccbab 0%, #3e75c8 100%);
+  background: -webkit-gradient(left top, right bottom, color-stop(0%, #4ccbab), color-stop(100%, #3e75c8));
+  background: -webkit-linear-gradient(-45deg, #4ccbab 0%, #3e75c8 100%);
+  background: -o-linear-gradient(-45deg, #4ccbab 0%, #3e75c8 100%);
+  background: -ms-linear-gradient(-45deg, #4ccbab 0%, #3e75c8 100%);
+  background: linear-gradient(135deg, #4ccbab 0%, #3e75c8 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4ccbab', endColorstr='#3e75c8', GradientType=1 );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /*color: #05386b;*/
+  font-size: 9vw;
+  text-align: center;
+  opacity: .90;
+  filter: alpha(opacity=90);
+  padding: 0;
+  display: block;
+}
+
+.ui.three.column.stackable.row h3 {
+  text-transform: uppercase;
+  margin: 0;
+}
+

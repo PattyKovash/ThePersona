@@ -1,0 +1,39 @@
+<div id="intTable">
+  <table class="ui padded selectable column table">
+    <thead>
+      <tr>
+        <th>Interview Date</th>
+        <th>Interview ID</th>
+        <th>Overall Tones</th>
+        <th class="right aligned"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="interview in $ctrl.userInterviews track by interview.id">
+        <td>{{ interview.createdAt }}</td>
+        <td><a href="#">{{ interview.id }}</a></td>
+        <td>HOW WILL I GET THIS INFO??</td>
+        <td class="right aligned">
+            <button type="button"><i class="large download icon"></i></button>
+            <button type="button"><i class="large remove circle icon"></i></button>
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th>Total Interviews: {{ $ctrl.userInterviews.length }}</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+
+
