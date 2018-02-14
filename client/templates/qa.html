@@ -1,0 +1,43 @@
+<div ng-if="$ctrl.resultsLoaded">
+  <div class="ui two column grid">
+    <div border='1' class="ten wide column">
+      <div ng-repeat="output in $ctrl.arranged track by $index">
+        <div class="three column row">
+          <div class="questions">
+            <h2>{{output.question}}</h2>
+          </div>
+          <div class="answers">
+            <h3>{{output.answer}}</h3>
+          </div>
+       </div>
+        <radar output = output.tones></radar>
+      </div>
+    </div>
+<!--   <table border='1'>
+    <tr>
+      <td><h2>Questions</h2></td>
+      <td><h2>Answers</h2></td>
+    </tr>
+    <tr ng-repeat="output in $ctrl.arranged track by $index">
+      <td><h3>{{output.question}}</h3></td>
+      <td><h3>{{output.answer}}</h3></td>
+      <td><radar output = output.tones></radar></td>
+    </tr>
+  </table> -->
+ </div>
+</div>
+
+
+
+
+<div class="ui grid">
+  <div class="eight wide column"></div>
+  <div class="eight wide column"></div>
+  <div class="ten wide column"></div>
+  <div class="six wide column"></div>
+  <div class="four wide column"></div>
+  <div class="twelve wide column"></div>
+  <div class="two wide column"></div>
+  <div class="fourteen wide column"></div>
+  <div class="sixteen wide column"></div>
+</div>

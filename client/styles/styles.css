@@ -273,20 +273,6 @@ button:active, button:focus, button:selected, i:active, i:focus, i:selected {
   text-decoration: none;
 }
 
-video {
-  width: 80%;
-  height: auto;
-  border: 1px solid grey;
-}
-
-#download {
-  margin-top: 15px;
-}
-
-#recorded {
-  background-color: #fff;
-}
-
 .ui.horizontal.header.divider {
   font-size: 1.5em;
   margin-bottom: 25px;
@@ -302,10 +288,6 @@ p.bodyContent {
   text-align: left;
   margin-bottom: 15px;
   line-height: 1.5em;
-}
-
-#record {
-  color: transparent;
 }
 
 .modal-body {

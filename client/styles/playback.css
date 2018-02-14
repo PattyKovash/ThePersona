@@ -1,0 +1,19 @@
+.nine.wide.column.playback {
+  background: transparent;
+  width: 100%;
+  height: auto;
+  border: 1px solid grey;
+  display: block;
+}
+
+
+
+#download {
+  margin-top: 15px;
+}
+
+/*#recorded {
+  background-color: #fff;
+}*/
+
+#recorded

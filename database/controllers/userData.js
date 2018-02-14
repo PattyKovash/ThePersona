@@ -6,11 +6,11 @@ exports.userByEmail = function (email, callback) {
       if (user) {
         db.Answer.find({ where: { userID: user.id } })
           .then((answer) => {
-            console.log('userData file this is the answer', answer);
+            // console.log('userData file this is the answer', answer);
             user.answers = answer;
           });
       }
-      console.log('userData file this is the user', user);
+      // console.log('userData file this is the user', user);
       callback(null, user);
     })
     .catch((err) => {
@@ -29,7 +29,7 @@ exports.createAnswer = function (email, promptid, reply, callback) {
             response: reply
           })
             .then((a) => {
-              userByEmail(email, callback);
+              exports.userByEmail(email, callback);
             });
         });
     })

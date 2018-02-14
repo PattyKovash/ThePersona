@@ -1,19 +1,19 @@
-<div class="breadcrumb results">
-  <a class="section" ui-sref="app.home">Home</a>
-  <p class="divider">  /  </p>
-  <a class="section" ui-sref="app.interview.mock">Interview</a>
-  <p class="divider">  /  </p>
-  <a class="section" ui-sref="app.analysis">Results</a>
-</div>
-
 <div id="analysis">
   <div class="ui eight column grid">
-    <div class="two column row">
+    <div class="one column row">
       <div class="column">
         <playback></playback>
       </div>
+    </div>
+    <div class="one column row">
       <div class="column">
-        <results></results>
+        <div id="graph">
+          <overallTone></overallTone>
+        <!-- <results></results> -->
+        </div>
+      </div>
+      <div id="graph">
+        <qa></qa>
       </div>
     </div>
   </div>

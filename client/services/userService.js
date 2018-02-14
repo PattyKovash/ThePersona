@@ -5,7 +5,7 @@ angular.module('app')
 
     this.setStatus = () => {
       this.getAllUserData((err, userData) => {
-        console.log('USERDATA:', userData);
+        // console.log('USERDATA:', userData);
         if (userData) {
           this.userData = userData;
           this.isLoggedIn = true;
@@ -13,7 +13,7 @@ angular.module('app')
         } else {
           this.isLoggedIn = userData;
         }
-        console.log('INSIDE SERVICE: ISLOGGEDIN:', this.isLoggedIn);
+        // console.log('INSIDE SERVICE: ISLOGGEDIN:', this.isLoggedIn);
       });
     };
 

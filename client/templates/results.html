@@ -1,30 +1,22 @@
 <div id="graph">
-<!--   <div class="breadcrumb results">
-    <a class="section" ui-sref="app.home">Home</a>
-    <p class="divider">  /  </p>
-    <a class="section" ui-sref="app.interview">Interview</a>
-    <p class="divider">  /  </p>
-    <a class="section" ui-sref="app.analysis">Results</a>
-  </div> -->
-<div >
-  <h1>Results</h1>
-  <div ng-if="!$ctrl.resultsLoaded"> Analyzing Interview </div>
-  <div ng-if="$ctrl.resultsLoaded">
-    <radar output="$ctrl.overall[0].tones" dope="$ctrl.test"></radar>
+  <div >
+    <h1>Results</h1>
+    <div ng-if="!$ctrl.resultsLoaded"> Analyzing Interview </div>
+    <div ng-if="$ctrl.resultsLoaded">
+      <radar output="$ctrl.overall[0].tones" dope="$ctrl.test"></radar>
+    </div>
+    <div ng-if="$ctrl.resultsLoaded">
+      <table border='1'>
+        <tr>
+          <td><h2>Questions</h2></td>
+          <td><h2>Answers</h2></td>
+        </tr>
+        <tr ng-repeat="output in $ctrl.arranged track by $index">
+          <td><h3>{{output.question}}</h3></td>
+          <td><h3>{{output.answer}}</h3></td>
+          <td><radar output = output.tones></radar></td>
+        </tr>
+      </table>
+    </div>
   </div>
-  <div ng-if="$ctrl.resultsLoaded">
-    <table border='1'>
-      <tr>
-        <td><h2>Questions</h2></td>
-        <td><h2>Answers</h2></td>
-      </tr>
-      <tr ng-repeat="output in $ctrl.arranged track by $index">
-        <td><h3>{{output.question}}</h3></td>
-        <td><h3>{{output.answer}}</h3></td>
-        <td><radar output = output.tones></radar></td>
-      </tr>
-    </table>
-  </div>
-
-</div>
 </div>
