@@ -7,36 +7,7 @@ angular.module('app')
     $scope.$on('loggedIn', () => {
       this.isLoggedIn = this.userService.isLoggedIn;
       this.userData = this.userService.userData;
-      console.log('USER DATA FROM USER COMPONENT:', this.userData);
     });
-
-    this.userInterviews = [
-      {
-        id: 3546545,
-        questions: [],
-        createdAt: '2018-02-10 20:22:16'
-      },
-      {
-        id: 7489877,
-        questions: [],
-        createdAt: '2018-02-10 20:22:16'
-      },
-      {
-        id: 3214856,
-        questions: [],
-        createdAt: '2018-02-08 10:22:16'
-      },
-      {
-        id: 4313216,
-        questions: [],
-        createdAt: '2018-02-08 10:22:16'
-      },
-      {
-        id: 5646587,
-        questions: [],
-        createdAt: '2018-02-08 10:22:16'
-      }
-    ];
 
     this.userVideos = [
       {
