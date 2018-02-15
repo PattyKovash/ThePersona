@@ -26,14 +26,19 @@ table.ui.padded.selectable.column.table {
   text-transform: uppercase;
 }
 
+.ui.padded.selectable.column.table th, #intTable tbody tr:nth-child(even) {
+  background-color: #f2f7f6;
+}
+
 .ui.padded.selectable.column.table tbody,
 .ui.padded.selectable.column.table td {
   border: none;
 }
 
-.ui.padded.selectable.column.table th, #intTable tbody tr:nth-child(even) {
-  background-color: #f2f7f6;
+.ui.padded.selectable.column.table td {
+  font-size: 1.2em;
 }
+
 
 .ui.padded.selectable.column.table td a:hover {
   color: #0857a6;
@@ -46,3 +51,4 @@ table.ui.padded.selectable.column.table {
 #intTable button i.large.download.icon {
   color: #626262;
 }
+
