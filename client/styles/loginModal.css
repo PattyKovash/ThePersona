@@ -1,0 +1,56 @@
+#login {
+  font: 300 1em 'Nunito Sans', sans-serif;
+}
+
+body div.modal.fade.ng-scope.ng-isolate-scope.in {
+  margin-top: 15%;
+}
+
+body div.modal.fade.ng-scope.ng-isolate-scope.in div div {
+}
+
+
+#login div.ui.stackable.divided.grid.modal-body {
+  height: calc(20vh);
+  border: none;
+  text-align: center;
+  width: 100%;
+  height: 250px;
+}
+
+#facebook, #google {
+  display: inline-block;
+}
+
+#login div div.two.wide.column {
+  text-align: center;
+  margin: auto;
+}
+
+#google {
+  padding-left: 18%;
+  padding-right: 15%;
+  text-align: center;
+}
+
+#facebook {
+  padding-right: 30%;
+}
+
+#login img {
+}
+
+#login h1.modal-header, #login h2 {
+  font: 300 1.5em 'Nunito Sans', sans-serif;
+  background-color: #f4f4f4;
+}
+
+#login h2 {
+  font-size: 1.2em;
+}
+
+.modal-content {
+  background-color: #f4f4f4;
+}
+
+

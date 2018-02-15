@@ -67,17 +67,6 @@ p.prompt {
   display: inline-block;
 }
 
-.login.ng-scope.ng-isolate-scope {
-  height: auto;
-  background-color: rgba(250, 250, 250, .90);
-}
-
-.modal-body {
-  text-align: center;
-  margin-top: 30px;
-  margin-bottom: 30px;
-}
-
 button {
   /*width: 150px;*/
   padding: 0;
@@ -237,8 +226,4 @@ p.bodyContent {
 
 #record {
   color: transparent;
-}
-
-.modal-body {
-  color: #fff;
 }
