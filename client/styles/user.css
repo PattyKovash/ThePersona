@@ -4,7 +4,7 @@
   width: 100%;
   position: absolute;
   font: 400 1em 'Nunito Sans', sans-serif;
-  color: #626262;
+  color: #6c6b6b;
 }
 
 .pusher.dashboardBody {
@@ -23,6 +23,7 @@
 
 .profile h3 {
   letter-spacing: 1px;
+  color: #626262;
 }
 
 .profile img {

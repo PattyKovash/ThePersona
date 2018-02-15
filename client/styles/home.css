@@ -23,13 +23,13 @@ a:hover.ui.huge.primary.button {
 }
 
 /* Content */
-.ui.three.column.stackable.row {
+#home .ui.three.column.stackable.row {
   width: 100%;
   height: calc(30vh);
   font-size: 1.4rem;
 }
 
-.three.column.row .column {
+#home .three.column.row .column {
   padding: 25px 20px;
   margin: auto;
   height: calc(30vh);

@@ -8,7 +8,7 @@
   height: calc(40vh);
 }
 
-.ui.three.column.stackable.row {
+div.ui.three.column.stackable.row {
   margin: 50px 3% auto 3%;
   height: calc(30vh);
 }
@@ -48,8 +48,15 @@ h1.numberStats {
   display: block;
 }
 
-.ui.three.column.stackable.row h3 {
+#user div.pusher.dashboardBody div.ui.three.column.stackable.row div h3,
+#dashboard h3 {
   text-transform: uppercase;
   margin: 0;
+  color: #626262;
+  font: 300 1.1em 'Nunito Sans', sans-serif;
+}
+
+#dashboard h3.history {
+  padding: 1%;
 }
 

@@ -27,7 +27,7 @@ angular.module('app')
         id: 1,
         response: 'My favorite data structure is a hash table because of its constant time insertion and lookup.',
         prompt: 'What is your favorite data structure and why?',
-        analysis: {
+        toneAnalysis: {
           tones: [
             {
               "score": 0.576521,
@@ -48,7 +48,7 @@ angular.module('app')
         id: 2,
         response: 'Javascript is the de facto language of front end development. most engineers have had some interaction with it regardless of role. its versatility also allows for fullstack development in one language',
         prompt: 'Why did you choose to learn Javascript over another language?',
-        analysis: {
+        toneAnalysis: {
           tones: [
             {
               "score": 0.915245,
@@ -69,7 +69,7 @@ angular.module('app')
         id: 10,
         response: 'Hashtables because of database operation optimizations and versatility objects are life!',
         prompt: 'What is your favorite data structure and why?',
-        analysis: {
+        toneAnalysis: {
           tones: [
             {
               "score": 0.753246,
@@ -90,7 +90,7 @@ angular.module('app')
         id: 11,
         response: 'Both call and apply are used to bind the this parameter to the context passed in as the first argument. Call takes individual arguments after the first argument, and apply takes an array of arguments after the first argument.',
         prompt: 'What is the difference between call and apply? What are their purposes?',
-        analysis: {
+        toneAnalysis: {
           tones: [
             {
               "score": 0.854432,
