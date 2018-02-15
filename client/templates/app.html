@@ -24,7 +24,7 @@
         My Dashboard
         </a>
         <a
-
+          ng-if="!$ctrl.isLoggedIn"
           ng-click="$ctrl.openComponentModal()"
           href="#"
           class="login">
