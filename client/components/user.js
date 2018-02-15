@@ -38,6 +38,14 @@ angular.module('app')
       }
     ];
 
+    this.userAnswers = [
+      {
+        id: 1,
+        response: "A hash table because it's constant time look up and search cability.",
+        promptId:
+      }
+    ];
+
     this.removeActiveSub = (e) => {
       const activeElem = document.getElementsByClassName('activeSub')[0];
       if (activeElem) {
