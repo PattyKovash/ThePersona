@@ -39,9 +39,9 @@ function checkAuthentication(req, res, next) {
   }
 }
 
-app.get('/user/dashboard', checkAuthentication, (req, res) => {
-  res.redirect('/#!/user/dashboard');
-});
+// app.get('/user/dashboard', checkAuthentication, (req, res) => {
+//   res.redirect('/#!/user/dashboard');
+// });
 
 app.get('/data/user', checkAuthentication, (req, res) => {
   const lookUp = req.user.dataValues.email;

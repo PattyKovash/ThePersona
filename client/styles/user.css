@@ -19,7 +19,6 @@
 
 #user h3 {
   font: 400 1.1em 'Nunito Sans', sans-serif;
-  color: #878788;
 }
 
 .profile h3 {
@@ -28,6 +27,9 @@
 
 .profile img {
   margin-bottom: 15px;
+  position: relative;
+  width: 60%;
+  margin-top: 10%;
 }
 
 .ui.vertical.sticky.menu {

@@ -3,22 +3,26 @@
     <thead>
       <tr>
         <th>Interview Date</th>
+        <th>Interview ID</th>
         <th>Video Link</th>
       </tr>
     </thead>
     <tbody>
       <tr ng-repeat="video in $ctrl.userVideos track by video.id">
         <td>{{ video.createdAt }}</td>
-        <td><a ng-href="{{video.url}}">Interview recording</a></td>
+        <td>{{ video.id }}</td>
+        <td><a ng-href="{{ video.url }}" target="blank">Interview recording</a></td>
       </tr>
     </tbody>
     <tfoot>
       <tr>
         <td></td>
         <td></td>
+        <td></td>
       </tr>
       <tr>
         <th>Total Interviews: {{ $ctrl.userVideos.length }}</th>
+        <th></th>
         <th></th>
       </tr>
     </tfoot>

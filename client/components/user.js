@@ -11,12 +11,12 @@ angular.module('app')
 
     this.userVideos = [
       {
-        id: 123456,
+        id: 1,
         createdAt: '2018-02-08 10:22:16',
         url: 'http://res.cloudinary.com/dinoa/video/upload/v1517876710/dab9lvbcpe5djbrymhde.mkv'
       },
       {
-        id: 234567,
+        id: 6,
         createdAt: '2018-02-10 10:22:17',
         url: 'http://res.cloudinary.com/dinoa/video/upload/v1518550712/mfvroni0blex8jt8ih9l.mkv'
       }
@@ -66,7 +66,7 @@ angular.module('app')
         createdAt: '2018-02-01 14:02:54'
       },
       {
-        id: 3,
+        id: 10,
         response: 'Hashtables because of database operation optimizations and versatility objects are life!',
         prompt: 'What is your favorite data structure and why?',
         analysis: {
@@ -87,7 +87,7 @@ angular.module('app')
         createdAt: '2018-02-04 10:30:55'
       },
       {
-        id: 4,
+        id: 11,
         response: 'Both call and apply are used to bind the this parameter to the context passed in as the first argument. Call takes individual arguments after the first argument, and apply takes an array of arguments after the first argument.',
         prompt: 'What is the difference between call and apply? What are their purposes?',
         analysis: {
@@ -127,7 +127,7 @@ angular.module('app')
       }
     }, 100);
 
-    this.userInit = () => {
+    this.init = () => {
       this.userRemoveActive;
     };
   })

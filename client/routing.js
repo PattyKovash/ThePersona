@@ -27,11 +27,6 @@ angular.module('app')
         component: 'results'
       },
       {
-        name: 'app.community',
-        url: 'community',
-        component: 'community'
-      },
-      {
         name: 'app.user',
         url: 'user',
         component: 'user'
