@@ -1,7 +1,7 @@
 angular.module('app')
   .controller('AppCtrl', function ($uibModal, $location, userService, $scope) {
     this.userService = userService;
-    this.isLoggedIn = this.userService.isLoggedIn;
+    this.isLoggedIn = true;
     this.animationsEnabled = true;
     this.currentUrl = '/home';
     this.previousUrl = null;
@@ -58,8 +58,6 @@ angular.module('app')
         component: 'login'
       });
     };
-
-    // this.init();
   })
   .component('app', {
     controller: 'AppCtrl',
