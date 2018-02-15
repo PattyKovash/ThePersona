@@ -21,33 +21,9 @@ p.divider {
   color: #fff;
 }
 
-#prompts, #speech, #results {
+#speech, #results {
   margin: auto;
   width: 65%;
-}
-
-div.promptsScreen {
-  background: transparent;
-  min-height: 500px;
-  /*height: 100%;*/
-  margin: 70px auto 0 auto;
-  /*border: 1px solid #bfc1c1;*/
-  text-align: center;
-  list-style: none;
-}
-
-#prompts h1 {
-  font-family: 'Raleway', sans-serif;
-  margin-top: 15px;
-}
-
-p.prompt {
-  padding: 12% 5%;
-  margin: 2% auto 0 auto;
-  font-size: 5em;
-  /*color: #393939;*/
-  color: #ECEBEB;
-  text-shadow: 4px 5px 5px #000;
 }
 
 #speech {
@@ -189,7 +165,7 @@ button.play {
 .fa.fa-play {
   font-size: 200px;
   /*color: #1ed992;*/
-  color: #464646;
+  color: red;
 }
 
 button.huge.ui.right.labeled.icon.button {

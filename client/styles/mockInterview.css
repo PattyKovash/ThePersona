@@ -1,0 +1,25 @@
+#prompts {
+  margin-top: 3%;
+  width: 80%;
+  margin: auto;
+  background: rgba(255, 255, 255, .70);
+  box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.1);
+  height: calc(50vh);
+}
+
+#prompts .column {
+  margin-top: 3%
+}
+
+#mockInterview {
+  font-size: 2em;
+}
+
+p.prompt {
+  padding: 12% 5%;
+  margin: 2% auto 0 auto;
+  font-size: 5em;
+  /*color: #393939;*/
+  color: #ECEBEB;
+  text-shadow: 4px 5px 5px #000;
+}
