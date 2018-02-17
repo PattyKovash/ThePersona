@@ -1,19 +1,11 @@
 angular.module('app')
-  .service('interviewService', function ($http, broadcastService, Interview) {
+  .service('interviewService', function ($http, broadcastService, Interview, QandA) {
     this.prompts = [];
     this.currentPromptsIndex = -1;
     this.currentPrompt = this.prompts[this.currentPromptsIndex];
     this.selectedPrompt = {};
     this.latestInterview = {};
     this.qAndA = {};
-
-    const Interview = () => {
-      this.qAndA = [];
-      this.videoUrl = '';
-      this.fullTranscript = '';
-      this.overallTones = [];
-      this.overallPersonality = [];
-    };
 
     const QandA = (question) => {
       this.question = question;
