@@ -14,8 +14,8 @@ angular.module('app')
     };
 
     // Create new QandA instance
-    this.createQandA =  () => {
-      this.qAndA = new QandA();
+    this.createQandA = (question) => {
+      this.qAndA = new QandA(question);
       console.log('Q and A:', this.qAndA);
     };
 

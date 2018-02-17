@@ -75,18 +75,21 @@ angular.module('app')
         console.log(this.finalTranscript);
         this.responses.push(this.finalTranscript);
         this.interviewService.qAndA.answer = this.finalTranscript;
-        this.watsonService.analyzeAnswer(this.finalTranscript, this.currentID);
+        this.watsonService.analyzeAnswer(this.finalTranscript);
         this.finalTranscript = '';
         this.recognition.start();
       }, 500);
     };
 
     this.startInterview = () => {
-      this.interviewService.createInterview();
       this.interviewStarted = true;
       this.recordingService.startRecording();
       this.interviewService.getNextPrompt();
+      this.interviewService.createInterview();
       this.interviewService.createQandA(this.interviewService.prompts[this.interviewService.currentPromptsIndex]);
+      console.log('qAndA:', this.interviewService.qAndA);
+      this.interviewService.latestInterview.qAndA[this.interviewService.qAndA.id] = this.interviewService.qAndA;
+      console.log('LATEST INTERVIEW: ', this.interviewService.latestInterview.qAndA);
       this.toggleRecognition();
     };
   })
