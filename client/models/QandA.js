@@ -1,7 +1,7 @@
 angular.module('app')
   .factory('QandA', function () {
     // Constructor
-    function Interview(question, answer, toneAnalysis, personalityAnalysis) {
+    function QandA(question, answer, toneAnalysis, personalityAnalysis) {
       this.question = question || '';
       this.answer = answer || '';
       this.toneAnalysis = toneAnalysis || [];
@@ -9,13 +9,13 @@ angular.module('app')
     }
 
     // Constructor Methods
-    Interview.prototype.setIntProp = (property, value) => {
+    QandA.prototype.setIntProp = (property, value) => {
       this[property] = value;
     };
 
-    Interview.prototype.getProp = property => this[property];
+    QandA.prototype.getProp = property => this[property];
 
-    Interview.prototype.getInterview = () => this;
+    QandA.prototype.getInterview = () => this;
 
     return QandA;
   });
