@@ -1,66 +1,64 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Persona</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Raleway:400,600|Roboto|Nunito+Sans:300,400,600" rel="stylesheet">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.css"/>
-  <link rel="stylesheet" href="./styles/styles.css"/>
-  <link rel="stylesheet" href="./styles/app.css"/>
-  <link rel="stylesheet" href="./styles/loginModal.css"/>
-  <link rel="stylesheet" href="./styles/home.css"/>
-  <link rel="stylesheet" href="./styles/user.css"/>
-  <link rel="stylesheet" href="./styles/dashboard.css"/>
-  <link rel="stylesheet" href="./styles/userInterviews.css"/>
-  <link rel="stylesheet" href="./styles/analysis.css"/>
-  <link rel="stylesheet" href="./styles/playback.css"/>
-  <link rel="stylesheet" href="./styles/results.css"/>
-  <link rel="stylesheet" href="./styles/mockInterview.css"/>
-  <script src="angular/angular.js"></script>
-  <script src="@uirouter/angularjs/release/angular-ui-router.js"></script>
-  <script src="angular-animate/angular-animate.js"></script>
-  <script src="angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
-  <script src="chart.js/dist/Chart.min.js"></script>
-  <script src="angular-chart.js/dist/angular-chart.min.js"></script>
-</head>
-<body>
-  <div ng-app="app">
-    <ui-view></ui-view>
-  </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.js" ></script>
-  <script type="text/javascript" src="index.js"></script>
-  <script type="text/javascript" src="routing.js" defer></script>
-  <script type="text/javascript" src="services/broadcastService.js" defer></script>
-  <script type="text/javascript" src="services/interviewService.js" defer></script>
-  <script type="text/javascript" src="services/recordingService.js" defer></script>
-  <script type="text/javascript" src="services/videoUploader.js" defer></script>
-  <script type="text/javascript" src="services/watsonService.js" defer></script>
-  <script type="text/javascript" src="services/userService.js" defer></script>
-  <script type="text/javascript" src="components/app.js" defer></script>
-  <script type="text/javascript" src="components/home.js" defer></script>
-  <script type="text/javascript" src="components/interview.js" defer></script>
-  <script type="text/javascript" src="components/practice.js" defer></script>
-  <script type="text/javascript" src="components/mock.js" defer></script>
-  <script type="text/javascript" src="components/prompts.js" defer></script>
-  <script type="text/javascript" src="components/speech.js" defer></script>
-  <script type="text/javascript" src="components/analysis.js" defer></script>
-  <script type="text/javascript" src="components/tone.js" defer></script>
-  <script type="text/javascript" src="components/recorder.js" defer></script>
-  <script type="text/javascript" src="components/community.js" defer></script>
-  <script type="text/javascript" src="components/user.js" defer></script>
-  <script type="text/javascript" src="components/userDashboard.js" defer></script>
-  <script type="text/javascript" src="components/userInterviews.js" defer></script>
-  <script type="text/javascript" src="components/userVideos.js" defer></script>
-  <script type="text/javascript" src="components/login.js" defer></script>
-  <script type="text/javascript" src="components/logout.js" defer></script>
-  <script type="text/javascript" src="components/playback.js" defer></script>
-  <script type="text/javascript" src="components/radar.js" defer></script>
-  <script type="text/javascript" src="components/results.js" defer></script>
-  <script type="text/javascript" src="components/bar.js" defer></script>
-  <script type="text/javascript" src="components/barLang.js"></script>
-  <script type="text/javascript" src="components/line.js"></script>
-</body>
+  <head>
+    <title>Persona</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,600|Roboto|Nunito+Sans:300,400,600" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.css"/>
+    <link rel="stylesheet" href="./styles/styles.css"/>
+    <link rel="stylesheet" href="./styles/app.css"/>
+    <link rel="stylesheet" href="./styles/loginModal.css"/>
+    <link rel="stylesheet" href="./styles/home.css"/>
+    <link rel="stylesheet" href="./styles/user.css"/>
+    <link rel="stylesheet" href="./styles/dashboard.css"/>
+    <link rel="stylesheet" href="./styles/userInterviews.css"/>
+    <link rel="stylesheet" href="./styles/analysis.css"/>
+    <link rel="stylesheet" href="./styles/playback.css"/>
+    <link rel="stylesheet" href="./styles/results.css"/>
+    <link rel="stylesheet" href="./styles/mockInterview.css"/>
+    <script src="angular/angular.js"></script>
+    <script src="@uirouter/angularjs/release/angular-ui-router.js"></script>
+    <script src="angular-animate/angular-animate.js"></script>
+    <script src="angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
+    <script src="chart.js/dist/Chart.min.js"></script>
+    <script src="angular-chart.js/dist/angular-chart.min.js"></script>
+  </head>
+  <body>
+    <div ng-app="app">
+      <ui-view></ui-view>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.js" ></script>
+    <script type="text/javascript" src="index.js"></script>
+    <script type="text/javascript" src="routing.js" defer></script>
+    <script type="text/javascript" src="services/broadcastService.js" defer></script>
+    <script type="text/javascript" src="services/interviewService.js" defer></script>
+    <script type="text/javascript" src="services/recordingService.js" defer></script>
+    <script type="text/javascript" src="services/videoUploader.js" defer></script>
+    <script type="text/javascript" src="services/watsonService.js" defer></script>
+    <script type="text/javascript" src="services/userService.js" defer></script>
+    <script type="text/javascript" src="components/app.js" defer></script>
+    <script type="text/javascript" src="components/home.js" defer></script>
+    <script type="text/javascript" src="components/interview.js" defer></script>
+    <script type="text/javascript" src="components/prompts.js" defer></script>
+    <script type="text/javascript" src="components/speech.js" defer></script>
+    <script type="text/javascript" src="components/analysis.js" defer></script>
+    <script type="text/javascript" src="components/tone.js" defer></script>
+    <script type="text/javascript" src="components/recorder.js" defer></script>
+    <script type="text/javascript" src="components/community.js" defer></script>
+    <script type="text/javascript" src="components/user.js" defer></script>
+    <script type="text/javascript" src="components/userDashboard.js" defer></script>
+    <script type="text/javascript" src="components/userInterviews.js" defer></script>
+    <script type="text/javascript" src="components/userVideos.js" defer></script>
+    <script type="text/javascript" src="components/login.js" defer></script>
+    <script type="text/javascript" src="components/logout.js" defer></script>
+    <script type="text/javascript" src="components/playback.js" defer></script>
+    <script type="text/javascript" src="components/radar.js" defer></script>
+    <script type="text/javascript" src="components/results.js" defer></script>
+    <script type="text/javascript" src="components/bar.js" defer></script>
+    <script type="text/javascript" src="components/barLang.js"></script>
+    <script type="text/javascript" src="components/line.js"></script>
+  </body>
 </html>

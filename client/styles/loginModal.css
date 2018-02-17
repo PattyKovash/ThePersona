@@ -6,10 +6,6 @@ body div.modal.fade.ng-scope.ng-isolate-scope.in {
   margin-top: 15%;
 }
 
-body div.modal.fade.ng-scope.ng-isolate-scope.in div div {
-}
-
-
 #login div.ui.stackable.divided.grid.modal-body {
   height: calc(20vh);
   border: none;

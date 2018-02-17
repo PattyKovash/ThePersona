@@ -29,26 +29,6 @@ div.ui.three.column.stackable.row {
   font-size: 1.1em;
 }
 
-h1.numberStats {
-  background: #4ccbab;
-  background: -moz-linear-gradient(-45deg, #4ccbab 0%, #3e75c8 100%);
-  background: -webkit-gradient(left top, right bottom, color-stop(0%, #4ccbab), color-stop(100%, #3e75c8));
-  background: -webkit-linear-gradient(-45deg, #4ccbab 0%, #3e75c8 100%);
-  background: -o-linear-gradient(-45deg, #4ccbab 0%, #3e75c8 100%);
-  background: -ms-linear-gradient(-45deg, #4ccbab 0%, #3e75c8 100%);
-  background: linear-gradient(135deg, #4ccbab 0%, #3e75c8 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4ccbab', endColorstr='#3e75c8', GradientType=1 );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  /*color: #05386b;*/
-  font-size: 9vw;
-  text-align: center;
-  opacity: .90;
-  filter: alpha(opacity=90);
-  padding: 0;
-  display: block;
-}
-
 #user div.pusher.dashboardBody div.ui.three.column.stackable.row div h3,
 #dashboard h3 {
   text-transform: uppercase;

@@ -30,10 +30,6 @@ angular.module('app')
         name: 'app.user',
         url: 'user',
         component: 'user'
-        // NEED TO ADD SERVICE TO RETRIEVE USER ID
-        // resolve: (UserService) => {
-        // return PeopleService.getUser();
-        // }
       },
       {
         name: 'app.user.dashboard',

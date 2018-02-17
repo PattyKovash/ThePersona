@@ -7,15 +7,6 @@
   position: relative;
 }
 
-p.prompt {
-  padding: 12% 5%;
-  margin: 2% auto 0 auto;
-  font-size: 5em;
-  /*color: #393939;*/
-  color: #ECEBEB;
-  text-shadow: 4px 5px 5px #000;
-}
-
 button.massive.ui.inverted.button.start,
 button.massive.ui.inverted.button.forward,
 button.massive.ui.right.floated.inverted.button.submit {
@@ -165,9 +156,7 @@ i.large.record.icon.flashing {
 div.promptsScreen {
   background: transparent;
   min-height: 500px;
-  /*height: 100%;*/
   margin: 70px auto 0 auto;
-  /*border: 1px solid #bfc1c1;*/
   text-align: center;
   list-style: none;
 }
@@ -182,7 +171,14 @@ h1.prompt {
   padding: 12% 5%;
   margin: 2% auto 0 auto;
   font-size: 5em;
-  /*color: #393939;*/
+  color: #ECEBEB;
+  text-shadow: 4px 5px 5px #000;
+}
+
+p.prompt {
+  padding: 12% 5%;
+  margin: 2% auto 0 auto;
+  font-size: 5em;
   color: #ECEBEB;
   text-shadow: 4px 5px 5px #000;
 }
