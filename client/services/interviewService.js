@@ -7,13 +7,17 @@ angular.module('app')
     this.latestInterview = {};
     this.qAndA = {};
 
-    const QandA = (question) => {
-      this.question = question;
-      this.answer = '';
-      this.toneAnalysis = [];
-      this.personalityAnalysis = [];
+    // Create new Interview instance
+    this.createInterview = () => {
+      this.latestInterview = new Interview();
+      console.log('LASTEST INTERVIEW:', this.latestInterview);
     };
 
+    // Create new QandA instance
+    this.createQandA =  () => {
+      this.qAndA = new QandA();
+      console.log('Q and A:', this.qAndA);
+    };
 
     // Returns array of prompts matching input tag
     this.queryPrompts = (tag, callback) => {
