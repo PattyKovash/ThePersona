@@ -1,12 +1,31 @@
 angular.module('app')
-  .service('interviewService', function ($http, broadcastService) {
+  .service('interviewService', function ($http, broadcastService, Interview) {
     this.prompts = [];
     this.currentPromptsIndex = -1;
     this.currentPrompt = this.prompts[this.currentPromptsIndex];
     this.selectedPrompt = {};
+    this.latestInterview = {};
+    this.qAndA = {};
 
+    const Interview = () => {
+      this.qAndA = [];
+      this.videoUrl = '';
+      this.fullTranscript = '';
+      this.overallTones = [];
+      this.overallPersonality = [];
+    };
+
+    const QandA = (question) => {
+      this.question = question;
+      this.answer = '';
+      this.toneAnalysis = [];
+      this.personalityAnalysis = [];
+    };
+
+
+    // Returns array of prompts matching input tag
     this.queryPrompts = (tag, callback) => {
-      $http.get('http://localhost:3000/api/prompts', {
+      $http.get('/api/prompts', {
         headers: {
           'Content-Type': 'application/json'
         },
