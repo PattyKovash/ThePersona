@@ -74,6 +74,7 @@ angular.module('app')
       setTimeout(() => {
         console.log(this.finalTranscript);
         this.responses.push(this.finalTranscript);
+        this.interviewService.qAndA.answer = this.finalTranscript;
         this.watsonService.analyzeAnswer(this.finalTranscript, this.currentID);
         this.finalTranscript = '';
         this.recognition.start();
