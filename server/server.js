@@ -69,22 +69,6 @@ app.get('/api/prompts', (req, res) => {
   });
 });
 
-// app.post('/api/ibmtone', (req, res) => {
-//   toneAnalyzer(req.body.data.text)
-//     .then((tone) => {
-//       const toneResults = JSON.parse(tone);
-//       if (req.isAuthenticated()) {
-//         userData.createAnswer(req.user.dataValues.email, req.body.data.promptID, req.body.data.text);
-//         res.status(200).json(toneResults);
-//       } else {
-//         res.status(200).json(toneResults);
-//       }
-//     })
-//     .catch((err) => {
-//       res.status(500).send(err);
-//     });
-// });
-
 app.post('/api/ibmtone', (req, res) => {
   toneAnalyzer(req.body.data.text)
     .then((tone) => {
@@ -92,7 +76,7 @@ app.post('/api/ibmtone', (req, res) => {
       res.status(200).send(toneResults);
     })
     .catch((err) => {
-      res.status(500).json(err);
+      res.status(500).send(err);
     });
 });
 

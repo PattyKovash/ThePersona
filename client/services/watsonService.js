@@ -7,20 +7,19 @@ angular.module('app')
     this.interviewFillers = [];
 
 
-    this.analyzeAnswer = (answer, questionID, cb) => {
+    this.analyzeAnswer = (answer, promptID, cb) => {
       this.responses.push(answer);
-      this.toneAnalysis(answer, questionID, false, (err, results) => {
+      this.toneAnalysis(answer, (err, results) => {
         if (err) {
           console.log(err);
           this.answerAnalysis.push('');
         }
         this.answerAnalysis.push(results);
         if (cb) {
-          cb();
+          cb(err, results);
         }
         console.log('tone anaylsis:', this.answerAnalysis);
       });
-
 
       this.wordAnalysis(answer, (err, results) => {
         if (err) { console.log(err); }
@@ -28,14 +27,14 @@ angular.module('app')
       });
     };
 
-    this.analyzeInterview = (interview) => {
+    this.analyzeInterview = (interview, promptID) => {
       this.toneAnalysis(interview, null, true, (err, results) => {
         if (err) {
           console.log('ERROR:', err);
           this.interviewAnalysis.push('');
         }
         this.interviewAnalysis.push(results);
-        console.log('Overall interview analysis:', this.interviewAnalysis)
+        console.log('Overall interview analysis:', this.interviewAnalysis);
         broadcastService.send('analysis Done');
       });
 
@@ -46,12 +45,10 @@ angular.module('app')
       });
     };
 
-    this.toneAnalysis = (transcription, promptID, overall, callback) => {
+    this.toneAnalysis = (transcription, callback) => {
       $http.post('/api/ibmtone', {
         data: {
           text: transcription,
-          promptID: promptID,
-          overall: overall
         }
       })
         .then(({ data }) => {
