@@ -85,6 +85,7 @@ angular.module('app')
       this.interviewStarted = true;
       this.recordingService.startRecording();
       this.interviewService.getNextPrompt();
+      this.interviewService.createQandA(this.interviewService.prompts[this.interviewService.currentPromptsIndex]);
       this.toggleRecognition();
     };
   })
