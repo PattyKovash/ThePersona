@@ -2,7 +2,7 @@ angular.module('app')
   .factory('QandA', function () {
     // Constructor
     function QandA(question, answer, toneAnalysis, personalityAnalysis) {
-      this.question = question || '';
+      this.question = question || {};
       this.answer = answer || '';
       this.toneAnalysis = toneAnalysis || [];
       this.personalityAnalysis = personalityAnalysis || [];
