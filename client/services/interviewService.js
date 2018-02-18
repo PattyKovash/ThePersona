@@ -1,16 +1,11 @@
 angular.module('app')
-  .service('interviewService', function ($http, broadcastService, Interview, QandA, $scope) {
+  .service('interviewService', function ($http, broadcastService, Interview, QandA) {
     this.prompts = [];
     this.currentPromptsIndex = -1;
     this.currentPrompt = this.prompts[this.currentPromptsIndex];
     this.selectedPrompt = {};
     this.latestInterview = {};
     this.qAndA = {};
-
-    $scope.$on('toneAnalysis', (event, args) => {
-      this.latestInterview.qAndA[args[0]].toneAnalysis = args[1];
-      console.log('latestInterview after tone: ', this.latestInterview);
-    });
 
     // Create new Interview instance
     this.createInterview = () => {

@@ -7,24 +7,42 @@ angular.module('app')
     this.interviewFillers = [];
 
 
-    this.analyzeAnswer = (answer, promptID, cb) => {
+    this.analyzeAnswer = (answer, promptID) => {
       this.responses.push(answer);
-      this.toneAnalysis(answer, (err, results) => {
-        if (err) {
-          console.log(err);
-          this.answerAnalysis.push('');
-        }
-        this.answerAnalysis.push(results);
-        if (cb) {
-          cb(err, results);
-        }
-        console.log('tone anaylsis:', this.answerAnalysis);
-      });
+      return this.toneAnalysis(answer)
+        .then((results) => {
+          if (results.data) {
+            broadcastService.send('toneAnalysis', results.data.document_tone, promptID);
+            console.log('promptID in watsonService:', promptID);
+            console.log('results in watsonService:', results.data.document_tone);
+            this.answerAnalysis.push(results.data.document_tone);
+          } else {
+            this.answerAnalysis.push('');
+          }
 
-      this.wordAnalysis(answer, (err, results) => {
-        if (err) { console.log(err); }
-        this.answerFillers.push(results);
-      });
+          this.wordAnalysis(answer, (results) => {
+            this.answerFillers.push(results);
+          });
+        })
+        .catch((err) => {
+          console.log('ERROR IN ANALYZE ANSWER: ', err);
+          return err;
+        });
+    //   this.toneAnalysis(answer, (results) => {
+    //     if (results === null) {
+    //     } else {
+    //     }
+    //     if (cb) {
+    //       cb(results);
+    //     }
+    //     console.log('tone anaylsis:', this.answerAnalysis);
+    //   });
+
+    //   this.wordAnalysis(answer, (err, results) => {
+    //     if (err) { console.log(err); }
+    //     this.answerFillers.push(results);
+    //   });
+    // };
     };
 
     this.analyzeInterview = (interview, promptID) => {
@@ -45,22 +63,33 @@ angular.module('app')
       });
     };
 
-    this.toneAnalysis = (transcription, callback) => {
-      $http.post('/api/ibmtone', {
+    this.toneAnalysis = (transcription) => {
+      return $http.post('/api/ibmtone', {
         data: {
           text: transcription,
         }
-      })
-        .then(({ data }) => {
-          if (callback) {
-            callback(null, data.document_tone);
-          }
-        }, ({ data }) => {
-          if (callback) {
-            callback(data, null);
-          }
-        });
+      });
     };
+
+    // this.toneAnalysis = (transcription, callback) => {
+    //   return $http.post('/api/ibmtone', {
+    //     data: {
+    //       text: transcription,
+    //     }
+    //   })
+    //     .then(({ data }) => {
+    //       console.log('DATA FROM TONE ANALYSIS: ', data);
+    //       if (callback && data !== null) {
+    //         callback(data.document_tone);
+    //       } else {
+    //         callback(data);
+    //       }
+    //     }, ({ data }) => {
+    //       if (callback) {
+    //         callback(data);
+    //       }
+    //     });
+    // };
     this.wordAnalysis = (transcription, callback) => {
       $http.post('/api/wordanalysis', {
         data: {

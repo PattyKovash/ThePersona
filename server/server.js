@@ -72,16 +72,19 @@ app.get('/api/prompts', (req, res) => {
 app.post('/api/ibmtone', (req, res) => {
   toneAnalyzer(req.body.data.text)
     .then((tone) => {
-      const toneResults = JSON.parse(tone);
-      res.status(200).send(toneResults);
+      // const toneResults = JSON.parse(tone);
+      console.log('TONE RESULTS FROM IBM TONE, ', tone);
+      res.status(200).json(tone);
     })
     .catch((err) => {
+      console.log('ERR FROM IBM TONE, ', err);
       res.status(500).send(err);
     });
 });
 
 app.post('/api/wordanalysis', (req, res) => {
   wordAnalyzer(req.body.data.text, (analysis) => {
+    console.log('ANALYSIS FROM API/WORDANALYSIS: ', analysis);
     res.send(JSON.stringify(analysis));
   }, req.body.data.fillers);
 });

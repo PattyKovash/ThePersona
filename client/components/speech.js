@@ -75,7 +75,8 @@ angular.module('app')
         console.log(this.finalTranscript);
         this.responses.push(this.finalTranscript);
         this.interviewService.qAndA.answer = this.finalTranscript;
-        this.watsonService.analyzeAnswer(this.finalTranscript, this.currentID);
+        console.log('promptID from speech controller', this.interviewService.qAndA.question.id);
+        this.watsonService.analyzeAnswer(this.finalTranscript, this.interviewService.qAndA.question.id);
         this.finalTranscript = '';
         this.recognition.start();
       }, 500);

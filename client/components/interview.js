@@ -2,10 +2,18 @@ angular.module('app')
   .controller('interviewCtrl', function (interviewService, $location, $scope) {
     this.interviewService = interviewService;
 
+    // Broadcasts
     $scope.$on('update', (event, args) => {
       const currentPromptIndex = args;
       this.currentPrompt = this.prompts[currentPromptIndex].question;
       this.showPrompts = true;
+    });
+
+    $scope.$on('toneAnalysis', (event, analysis, promptID) => {
+      console.log('ANALYSIS: ', analysis);
+      console.log('ANALYSIS: ', analysis);
+      this.interviewService.latestInterview.qAndA[promptID].toneAnalysis = analysis;
+      console.log('latestInterview after tone: ', this.latestInterview);
     });
 
     this.prompts = [];
