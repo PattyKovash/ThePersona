@@ -85,7 +85,7 @@ app.post('/api/ibmtone', (req, res) => {
 app.post('/api/wordanalysis', (req, res) => {
   wordAnalyzer(req.body.data.text, (analysis) => {
     console.log('ANALYSIS FROM API/WORDANALYSIS: ', analysis);
-    res.send(JSON.stringify(analysis));
+    res.json(analysis);
   }, req.body.data.fillers);
 });
 

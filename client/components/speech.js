@@ -60,7 +60,7 @@ angular.module('app')
       this.recordingService.submitRecording();
       setTimeout(() => {
         this.responses.push(this.finalTranscript);
-        this.watsonService.analyzeAnswer(this.finalTranscript, this.currentID, () => { this.watsonService.analyzeInterview(this.responses.join('.'))
+        this.watsonService.analyzeAnswer(this.finalTranscript, this.currentID, () => { this.watsonService.analyzeInterview(this.responses.join('.'));
         });
       }, 500);
     };
@@ -75,9 +75,14 @@ angular.module('app')
         console.log(this.finalTranscript);
         this.responses.push(this.finalTranscript);
         this.interviewService.qAndA.answer = this.finalTranscript;
-        this.watsonService.analyzeAnswer(this.finalTranscript, this.interviewService.qAndA.question.id);
-        this.interviewService.createQandA(this.interviewService.prompts[this.interviewService.currentPromptsIndex]);
-        this.interviewService.latestInterview.qAndA[this.interviewService.qAndA.question.id] = this.interviewService.qAndA;
+        this.watsonService.analyzeAnswer(
+          this.finalTranscript,
+          this.interviewService.qAndA.question.id
+        );
+        this.interviewService.createQandA(this.interviewService
+          .prompts[this.interviewService.currentPromptsIndex]);
+        this.interviewService.latestInterview
+          .qAndA[this.interviewService.qAndA.question.id] = this.interviewService.qAndA;
         console.log('LATEST INTERVIEW ON NEXT: ', this.interviewService.latestInterview);
         this.finalTranscript = '';
         this.recognition.start();
@@ -89,8 +94,10 @@ angular.module('app')
       this.interviewStarted = true;
       this.recordingService.startRecording();
       this.interviewService.getNextPrompt();
-      this.interviewService.createQandA(this.interviewService.prompts[this.interviewService.currentPromptsIndex]);
-      this.interviewService.latestInterview.qAndA[this.interviewService.qAndA.question.id] = this.interviewService.qAndA;
+      this.interviewService.createQandA(this.interviewService
+        .prompts[this.interviewService.currentPromptsIndex]);
+      this.interviewService.latestInterview
+        .qAndA[this.interviewService.qAndA.question.id] = this.interviewService.qAndA;
       this.toggleRecognition();
     };
   })

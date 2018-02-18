@@ -8,11 +8,12 @@ angular.module('app')
       this.currentPrompt = this.prompts[currentPromptIndex].question;
       this.showPrompts = true;
     });
-
     $scope.$on('toneAnalysis', (event, results) => {
-      console.log('ANALYSIS: ', results.analysis);
-      console.log('PROMPTID: ', results.promptID);
       this.interviewService.latestInterview.qAndA[results.promptID].toneAnalysis = results.analysis;
+      console.log('latestInterview after tone: ', this.interviewService.latestInterview);
+    });
+    $scope.$on('wordAnalysis', (event, results) => {
+      this.interviewService.latestInterview.qAndA[results.promptID].wordAnalysis = results.analysis;
       console.log('latestInterview after tone: ', this.interviewService.latestInterview);
     });
 

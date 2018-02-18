@@ -1,11 +1,12 @@
 angular.module('app')
   .factory('QandA', function () {
     // Constructor
-    function QandA(question, answer, toneAnalysis, personalityAnalysis) {
+    function QandA(question, answer, toneAnalysis, personalityAnalysis, wordAnalysis) {
       this.question = question || {};
       this.answer = answer || '';
       this.toneAnalysis = toneAnalysis || [];
       this.personalityAnalysis = personalityAnalysis || [];
+      this.wordAnalysis = wordAnalysis || [];
     }
 
     // Constructor Methods
