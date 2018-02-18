@@ -6,13 +6,12 @@ angular.module('app')
     this.interviewAnalysis = [];
     this.interviewFillers = [];
 
-
     this.analyzeAnswer = (answer, promptID) => {
       this.responses.push(answer);
       return this.toneAnalysis(answer)
         .then((results) => {
           if (results.data) {
-            broadcastService.send('toneAnalysis', results.data.document_tone, promptID);
+            broadcastService.send('toneAnalysis', { analysis: results.data.document_tone, promptID: promptID });
             console.log('promptID in watsonService:', promptID);
             console.log('results in watsonService:', results.data.document_tone);
             this.answerAnalysis.push(results.data.document_tone);

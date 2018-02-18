@@ -9,11 +9,11 @@ angular.module('app')
       this.showPrompts = true;
     });
 
-    $scope.$on('toneAnalysis', (event, analysis, promptID) => {
-      console.log('ANALYSIS: ', analysis);
-      console.log('ANALYSIS: ', analysis);
-      this.interviewService.latestInterview.qAndA[promptID].toneAnalysis = analysis;
-      console.log('latestInterview after tone: ', this.latestInterview);
+    $scope.$on('toneAnalysis', (event, results) => {
+      console.log('ANALYSIS: ', results.analysis);
+      console.log('PROMPTID: ', results.promptID);
+      this.interviewService.latestInterview.qAndA[results.promptID].toneAnalysis = results.analysis;
+      console.log('latestInterview after tone: ', this.interviewService.latestInterview);
     });
 
     this.prompts = [];
