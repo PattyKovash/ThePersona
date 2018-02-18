@@ -60,8 +60,13 @@ angular.module('app')
       this.recordingService.submitRecording();
       setTimeout(() => {
         this.responses.push(this.finalTranscript);
-        this.watsonService.analyzeAnswer(this.finalTranscript, this.currentID, () => { this.watsonService.analyzeInterview(this.responses.join('.'));
-        });
+        this.watsonService.analyzeAnswer(this.finalTranscript, this.currentID)
+          .then(() => {
+            return this.watsonService.analyzeInterview(this.responses.join('.'), this.currentID);
+          })
+          .catch((err) => {
+            console.log('ERROR: ', err);
+          });
       }, 500);
     };
 
@@ -77,12 +82,12 @@ angular.module('app')
         this.interviewService.qAndA.answer = this.finalTranscript;
         this.watsonService.analyzeAnswer(
           this.finalTranscript,
-          this.interviewService.qAndA.question.id
+          this.currentID
         );
         this.interviewService.createQandA(this.interviewService
           .prompts[this.interviewService.currentPromptsIndex]);
         this.interviewService.latestInterview
-          .qAndA[this.interviewService.qAndA.question.id] = this.interviewService.qAndA;
+          .qAndA[this.currentID] = this.interviewService.qAndA;
         console.log('LATEST INTERVIEW ON NEXT: ', this.interviewService.latestInterview);
         this.finalTranscript = '';
         this.recognition.start();

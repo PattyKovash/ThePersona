@@ -16,6 +16,14 @@ angular.module('app')
       this.interviewService.latestInterview.qAndA[results.promptID].wordAnalysis = results.analysis;
       console.log('latestInterview after tone: ', this.interviewService.latestInterview);
     });
+    $scope.$on('overallTones', (event, results) => {
+      this.interviewService.latestInterview.overallTones = results.analysis;
+      console.log('FINAL OVERALL TONES: ', this.interviewService.latestInterview);
+    });
+    $scope.$on('overallWords', (event, results) => {
+      this.interviewService.latestInterview.overallWords = results.analysis;
+      console.log('FINAL OVERALL WORDS: ', this.interviewService.latestInterview);
+    });
 
     this.prompts = [];
     this.currentPromptIndex = -1;

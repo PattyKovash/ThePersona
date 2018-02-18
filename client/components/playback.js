@@ -1,8 +1,9 @@
 angular.module('app')
-  .controller('playbackController', function (recordingService, videoUploader) {
+  .controller('playbackController', function (recordingService, videoUploader, interviewService) {
     // services
     this.recordingService = recordingService;
     this.videoUploader = videoUploader;
+    this.interviewService = interviewService;
 
     // state properties
     this.recordedBlobs = [...this.recordingService.recording];
@@ -37,7 +38,10 @@ angular.module('app')
       const reader = new FileReader();
       reader.addEventListener('loadend', () => {
         this.uploadVideo(reader.result);
+        this.interviewService.latestInterview.videoUrl = reader.result;
+        console.log('LATEST INT AFTER URL: ', this.interviewService.latestInterview);
       });
+      console.log('READ AS DATA URL', reader.readAsDataURL(this.recordingBlob));
       reader.readAsDataURL(this.recordingBlob);
     };
     // invoke on compononent mount

@@ -39,7 +39,7 @@ angular.module('app')
       return this.toneAnalysis(interview, promptID)
         .then((results) => {
           if (results.data) {
-            broadcastService.send('toneAnalysis', {
+            broadcastService.send('overallTones', {
               analysis: results.data.document_tone,
               promptID: promptID
             });
@@ -48,11 +48,15 @@ angular.module('app')
           } else {
             this.interviewAnalysis.push('');
           }
-          broadcastService.send('analysis Done');
 
-          this.wordAnalysis(answer)
+          this.wordAnalysis(interview)
             .then((wordResults) => {
-              this.answerFillers.push(wordResults);
+              this.answerFillers.push(wordResults.data);
+              broadcastService.send('overallWords', {
+                analysis: wordResults.data,
+                promptID: promptID
+              });
+              broadcastService.send('analysis Done');
             });
         })
         .catch((err) => {

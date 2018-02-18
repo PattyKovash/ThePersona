@@ -102,6 +102,9 @@ app.post('/api/insight', (req, res) => {
 app.post('/api/cloudinary', (req, res) => {
   const videoURL = req.body.video;
   videoUploader(videoURL, { resource_type: 'video' }, (error, result) => {
+    if (error) {
+      res.status(500).send(error);
+    }
     res.end();
   });
 });
