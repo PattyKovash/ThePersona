@@ -1,32 +1,30 @@
 angular.module('app')
-  .service('watsonService', function ($http, broadcastService) {
+  .service('watsonService', function ($http, broadcastService, interviewService) {
     this.responses = [];
     this.answerAnalysis = [];
     this.answerFillers = [];
     this.interviewAnalysis = [];
     this.interviewFillers = [];
+    this.interviewService = interviewService;
 
     this.analyzeAnswer = (answer, promptID) => {
       this.responses.push(answer);
       return this.toneAnalysis(answer)
         .then((results) => {
-          if (results.data) {
-            broadcastService.send('toneAnalysis', {
-              analysis: results.data.document_tone,
-              promptID: promptID
-            });
+          const data = results.data;
+          console.log('INSIDE ANALYSE ANSWER: ', answer);
+          if (data) {
+            this.interviewService.updateEachAnswer(promptID, answer, 'toneAnalysis', data.document_tone);
             this.answerAnalysis.push(results.data.document_tone);
           } else {
             this.answerAnalysis.push('');
           }
-
-          this.wordAnalysis(answer)
+        })
+        .then(() => {
+          return this.wordAnalysis(answer)
             .then((wordResults) => {
+              this.interviewService.updateEachAnswer(promptID, answer, 'wordAnalysis', wordResults.data);
               this.answerFillers.push(wordResults.data);
-              broadcastService.send('wordAnalysis', {
-                analysis: wordResults.data,
-                promptID: promptID
-              });
             });
         })
         .catch((err) => {
@@ -36,28 +34,28 @@ angular.module('app')
     };
 
     this.analyzeInterview = (interview, promptID) => {
+      console.log('FULL INTERVIEW: ', interview);
       return this.toneAnalysis(interview, promptID)
         .then((results) => {
-          if (results.data) {
-            broadcastService.send('overallTones', {
-              analysis: results.data.document_tone,
-              promptID: promptID
-            });
+          const data = results.data;
+          if (data) {
+            this.interviewService.updateOverall(interview, 'overallTones', data.document_tone);
             this.interviewAnalysis.push(results.data.document_tone);
             console.log('Overall interview analysis:', this.interviewAnalysis);
           } else {
             this.interviewAnalysis.push('');
           }
-
-          this.wordAnalysis(interview)
+        })
+        .then(() => {
+          return this.wordAnalysis(interview)
             .then((wordResults) => {
+              this.interviewService.updateOverall(null, 'overallWords', wordResults.data);
               this.answerFillers.push(wordResults.data);
-              broadcastService.send('overallWords', {
-                analysis: wordResults.data,
-                promptID: promptID
-              });
-              broadcastService.send('analysis Done');
             });
+        })
+        .then(() => {
+          console.log('FINAL INT OBJ', this.interviewService.curInt);
+          broadcastService.send('analysis Done');
         })
         .catch((err) => {
           console.log('ERROR IN ANALYZE ANSWER: ', err);

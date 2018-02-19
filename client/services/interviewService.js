@@ -4,19 +4,40 @@ angular.module('app')
     this.currentPromptsIndex = -1;
     this.currentPrompt = this.prompts[this.currentPromptsIndex];
     this.selectedPrompt = {};
-    this.latestInterview = {};
+    this.curInt = {};
     this.qAndA = {};
 
     // Create new Interview instance
     this.createInterview = () => {
-      this.latestInterview = new Interview();
-      console.log('LASTEST INTERVIEW:', this.latestInterview);
+      this.curInt = new Interview();
+      console.log('LATEST INTERVIEW:', this.curInt);
     };
 
     // Create new QandA instance
     this.createQandA = (question) => {
       this.qAndA = new QandA(question);
       console.log('Q and A:', this.qAndA);
+    };
+
+    this.updateEachAnswer = (promptID, answer, analysisName, analysis) => {
+      console.log('INSIDE UPDATE EACH - ANSWER: ', answer);
+      console.log('INSIDE UPDATE EACH - ID: ', promptID);
+      console.log('INSIDE UPDATE EACH - NAME: ', analysisName);
+      console.log('INSIDE UPDATE EACH - ANALYSIS: ', analysis);
+
+      const qAndA = this.curInt.qAndA[promptID];
+      console.log('INSIDE UPDATE EACH - QA: ', qAndA);
+      qAndA.answer = answer;
+      qAndA[analysisName] = analysis;
+      console.log('CURRENT INT: ', this.curInt);
+    };
+
+    this.updateOverall = (interview, analysisName, analysis) => {
+      if (interview) {
+        this.curInt.fullTranscript = interview;
+      }
+      this.curInt[analysisName] = analysis;
+      console.log('CURRENT INT: ', this.curInt);
     };
 
     // Returns array of prompts matching input tag

@@ -57,8 +57,12 @@ angular.module('app')
     };
 
     this.handleSubmission = () => {
+      this.recognition.stop();
       this.recordingService.submitRecording();
+      this.interviewService.createQandA(this.interviewService.prompts[this.interviewService.currentPromptsIndex]);
+      this.interviewService.curInt.qAndA[this.currentID] = this.interviewService.qAndA;
       setTimeout(() => {
+        console.log('LAST ANSWER: ', this.finalTranscript);
         this.responses.push(this.finalTranscript);
         this.watsonService.analyzeAnswer(this.finalTranscript, this.currentID)
           .then(() => {
@@ -75,20 +79,18 @@ angular.module('app')
       this.reachedLastQuestion = (this.promptCount === 2);
       this.recognition.stop();
       console.log(this.currentID);
+      let previousID = this.currentID;
+      this.interviewService.createQandA(this.interviewService.prompts[this.interviewService.currentPromptsIndex]);
+      this.interviewService.curInt.qAndA[previousID] = this.interviewService.qAndA;
       this.interviewService.getNextPrompt();
       setTimeout(() => {
         console.log(this.finalTranscript);
         this.responses.push(this.finalTranscript);
-        this.interviewService.qAndA.answer = this.finalTranscript;
         this.watsonService.analyzeAnswer(
           this.finalTranscript,
-          this.currentID
+          previousID
         );
-        this.interviewService.createQandA(this.interviewService
-          .prompts[this.interviewService.currentPromptsIndex]);
-        this.interviewService.latestInterview
-          .qAndA[this.currentID] = this.interviewService.qAndA;
-        console.log('LATEST INTERVIEW ON NEXT: ', this.interviewService.latestInterview);
+        console.log('LATEST INTERVIEW ON NEXT: ', this.interviewService.curInt);
         this.finalTranscript = '';
         this.recognition.start();
       }, 500);
@@ -99,10 +101,6 @@ angular.module('app')
       this.interviewStarted = true;
       this.recordingService.startRecording();
       this.interviewService.getNextPrompt();
-      this.interviewService.createQandA(this.interviewService
-        .prompts[this.interviewService.currentPromptsIndex]);
-      this.interviewService.latestInterview
-        .qAndA[this.interviewService.qAndA.question.id] = this.interviewService.qAndA;
       this.toggleRecognition();
     };
   })

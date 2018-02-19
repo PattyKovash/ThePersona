@@ -3,7 +3,7 @@ angular.module('app')
     this.interviewService = interviewService;
     this.watsonService = watsonService;
 
-
+    // Broadcasts
     $scope.$on('analysis Done', (event) => {
       console.log('analysis done, organizing results');
       //Analysis for whole interview

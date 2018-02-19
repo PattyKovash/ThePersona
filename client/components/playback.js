@@ -37,11 +37,11 @@ angular.module('app')
     this.generateVideoURL = () => {
       const reader = new FileReader();
       reader.addEventListener('loadend', () => {
-        this.uploadVideo(reader.result);
-        this.interviewService.latestInterview.videoUrl = reader.result;
+        const url = reader.result;
+        this.uploadVideo(url);
+        this.interviewService.updateOverall(null, 'videoUrl', url);
         console.log('LATEST INT AFTER URL: ', this.interviewService.latestInterview);
       });
-      console.log('READ AS DATA URL', reader.readAsDataURL(this.recordingBlob));
       reader.readAsDataURL(this.recordingBlob);
     };
     // invoke on compononent mount
