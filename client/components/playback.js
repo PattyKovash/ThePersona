@@ -37,10 +37,7 @@ angular.module('app')
     this.generateVideoURL = () => {
       const reader = new FileReader();
       reader.addEventListener('loadend', () => {
-        const url = reader.result;
-        this.uploadVideo(url);
-        this.interviewService.updateOverall(null, 'videoUrl', url);
-        console.log('LATEST INT AFTER URL: ', this.interviewService.latestInterview);
+        this.uploadVideo(reader.result);
       });
       reader.readAsDataURL(this.recordingBlob);
     };
@@ -49,9 +46,12 @@ angular.module('app')
 
     // method that utilizes service to send video to the server
     this.uploadVideo = (videoURL) => {
-      this.videoUploader.upload(videoURL, (err, data) => {
-        if (data) {
-          console.log('Video successfully uploaded', data);
+      this.videoUploader.upload(videoURL, (err, upload) => {
+        const url = upload.data.url;
+        if (url) {
+          console.log('Video successfully uploaded', upload);
+          this.interviewService.updateOverall(null, 'videoUrl', url);
+          console.log('LATEST INT AFTER URL: ', this.interviewService.curInt);
         } else {
           console.log('Video could not be uploaded', err);
         }

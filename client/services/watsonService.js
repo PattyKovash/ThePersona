@@ -54,6 +54,20 @@ angular.module('app')
             });
         })
         .then(() => {
+          const prompt = this.interviewService.curInt.qAndA[promptID];
+          const wordCount = prompt.wordAnalysis[2];
+          console.log('WORD RESULTS: ', wordCount);
+          if (wordCount > 100) {
+            return this.personalityAnalysis(interview)
+              .then((personResults) => {
+                console.log('PERSONALITY DATA: ', personResutls.data);
+                if (data) {
+                  this.interviewService.updateOverall(promptID, interview, 'overallPersonality', personResults.data);
+                }
+              });
+          }
+        })
+        .then(() => {
           console.log('FINAL INT OBJ', this.interviewService.curInt);
           broadcastService.send('analysis Done');
         })
@@ -73,6 +87,14 @@ angular.module('app')
 
     this.wordAnalysis = (transcription) => {
       return $http.post('/api/wordanalysis', {
+        data: {
+          text: transcription
+        }
+      });
+    };
+
+    this.personalityAnalysis = (transcription) => {
+      return $http.post('/api/insight', {
         data: {
           text: transcription
         }

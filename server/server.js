@@ -92,7 +92,7 @@ app.post('/api/wordanalysis', (req, res) => {
 app.post('/api/insight', (req, res) => {
   personalityInsight(req.body.data.text)
     .then((personality) => {
-      res.json(personality);
+      res.status(200).json(personality);
     })
     .catch((err) => {
       res.status(500).send(err.error);
@@ -105,7 +105,7 @@ app.post('/api/cloudinary', (req, res) => {
     if (error) {
       res.status(500).send(error);
     }
-    res.end();
+    res.status(200).json(result);
   });
 });
 
