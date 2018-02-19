@@ -41,7 +41,25 @@ Answer.belongsTo(User, {
   onDelete: `CASCADE`
 });
 
+Answer.belongsTo(Prompt, {
+  targetKey: `id`,
+  constraints: false,
+  onDelete: `CASCADE`
+});
+
+Answer.belongsTo(Interview, {
+  targetKey: `id`,
+  constraints: false,
+  onDelete: `CASCADE`
+});
+
 Prompt.belongsTo(User, {
+  targetKey: `id`,
+  constraints: false,
+  onDelete: `CASCADE`
+});
+
+Interview.belongsTo(User, {
   targetKey: `id`,
   constraints: false,
   onDelete: `CASCADE`
@@ -59,24 +77,6 @@ Vote.belongsTo(User, {
   onDelete: `CASCADE`
 });
 
-Answer.belongsTo(Prompt, {
-  targetKey: `id`,
-  constraints: false,
-  onDelete: `CASCADE`
-});
-
-Answer.belongsTo(Interview, {
-  targetKey: `id`,
-  constraints: false,
-  onDelete: `CASCADE`
-});
-
-Interview.belongsTo(User, {
-  targetKey: `id`,
-  constraints: false,
-  onDelete: `CASCADE`
-});
-
 const selectAll = (callback) => {
   User.findAll()
     .then((results) => {
@@ -87,16 +87,10 @@ const selectAll = (callback) => {
     });
 };
 
-const getPrompts = (query, callback) => {
-  Prompt.findAll({
+const getPrompts = (query) => {
+  return Prompt.findAll({
     where: query
-  })
-    .then((found) => {
-      if (callback) {
-        callback(null, found);
-      }
-    })
-    .catch(callback);
+  });
 };
 
 const findUser = (query, callback) => {

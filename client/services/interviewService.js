@@ -41,24 +41,15 @@ angular.module('app')
     };
 
     // Returns array of prompts matching input tag
-    this.queryPrompts = (tag, callback) => {
-      $http.get('/api/prompts', {
+    this.queryPrompts = (tag) => {
+      return $http.get('/api/prompts', {
         headers: {
           'Content-Type': 'application/json'
         },
         params: {
           tags: tag
         }
-      })
-        .then(({ data }) => {
-          if (callback) {
-            callback(null, data);
-          }
-        }, ({ data }) => {
-          if (callback) {
-            callback(data, null);
-          }
-        });
+      });
     };
 
     this.selectNumPrompts = (numPrompts, prompts) => {

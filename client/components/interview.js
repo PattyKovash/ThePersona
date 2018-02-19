@@ -25,16 +25,24 @@ angular.module('app')
     };
 
     this.init = () => {
-      this.interviewService.queryPrompts('all', (err, data) => {
-        this.prompts = this.interviewService.selectNumPrompts(10, data);
-      });
+      this.interviewService.queryPrompts('all')
+        .then(({ data }) => {
+          this.prompts = this.interviewService.selectNumPrompts(10, data);
+        })
+        .catch(({ data }) => {
+          console.log('ERROR: ', data);
+        });
     };
 
     this.setPrompts = () => {
       const tag = this.options.selectedType.name;
-      this.interviewService.queryPrompts(tag, (err, data) => {
-        this.prompts = this.interviewService.selectNumPrompts(null, data);
-      });
+      this.interviewService.queryPrompts(tag)
+        .then(({ data }) => {
+          this.prompts = this.interviewService.selectNumPrompts(null, data);
+        })
+        .catch(({ data }) => {
+          console.log('ERROR: ', data);
+        });
     };
 
     this.selectPrompt = () => {

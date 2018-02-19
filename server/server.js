@@ -60,19 +60,18 @@ app.get('/api/prompts', (req, res) => {
   if (tag === 'all') {
     query = {};
   }
-  db.getPrompts(query, (err, results) => {
-    if (err) {
-      res.status(500).send(err);
-    } else {
+  db.getPrompts(query)
+    .then((results) => {
       res.status(200).json(results);
-    }
-  });
+    })
+    .catch((err) => {
+      res.status(500).send(err);
+    });
 });
 
 app.post('/api/ibmtone', (req, res) => {
   toneAnalyzer(req.body.data.text)
     .then((tone) => {
-      // const toneResults = JSON.parse(tone);
       console.log('TONE RESULTS FROM IBM TONE, ', tone);
       res.status(200).json(tone);
     })
