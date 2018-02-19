@@ -18,14 +18,10 @@ module.exports = function analyzeInput(input) {
         sentences: false,
       };
 
-      console.log('PARAMS FROM analyzeInput: ', params);
-
       request.tone(params, (err, tone) => {
         if (err) {
-          console.log('ERROR OUT AT TONES!!!!!!, ', err);
           reject(err);
         } else {
-          console.log('TONE FROM analyzeInput: ', tone);
           resolve(tone);
         }
       });

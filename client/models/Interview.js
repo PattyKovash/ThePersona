@@ -1,7 +1,8 @@
 angular.module('app')
   .factory('Interview', function () {
     // Interview Constructor
-    function Interview(qAndA, videUrl, fullTranscript, overallTones, overallPersonality, overallWords) {
+    function Interview(userId, qAndA, videUrl, fullTranscript, overallTones, overallPersonality, overallWords) {
+      this.userId = userId || null;
       this.qAndA = fullTranscript || {};
       this.videoUrl = videUrl || '';
       this.fullTranscript = fullTranscript || '';

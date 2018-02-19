@@ -72,7 +72,6 @@ app.get('/api/prompts', (req, res) => {
 app.post('/api/ibmtone', (req, res) => {
   toneAnalyzer(req.body.data.text)
     .then((tone) => {
-      console.log('TONE RESULTS FROM IBM TONE, ', tone);
       res.status(200).json(tone);
     })
     .catch((err) => {
@@ -83,7 +82,6 @@ app.post('/api/ibmtone', (req, res) => {
 
 app.post('/api/wordanalysis', (req, res) => {
   wordAnalyzer(req.body.data.text, (analysis) => {
-    console.log('ANALYSIS FROM API/WORDANALYSIS: ', analysis);
     res.json(analysis);
   }, req.body.data.fillers);
 });
@@ -110,7 +108,6 @@ app.post('/api/cloudinary', (req, res) => {
 
 app.post('/api/interviews', (req, res) => {
   const intObj = req.body.intObj;
-  console.log('INTOBJ: ', intObj);
   interviewData.addInterview(intObj)
     .then((interview) => {
       res.status(200).json(interview);

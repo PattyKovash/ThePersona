@@ -62,7 +62,6 @@ angular.module('app')
       this.interviewService.createQandA(this.interviewService.prompts[this.interviewService.currentPromptsIndex]);
       this.interviewService.curInt.qAndA[this.currentID] = this.interviewService.qAndA;
       setTimeout(() => {
-        console.log('LAST ANSWER: ', this.finalTranscript);
         this.responses.push(this.finalTranscript);
         this.watsonService.analyzeAnswer(this.finalTranscript, this.currentID)
           .then(() => {
@@ -90,7 +89,6 @@ angular.module('app')
           this.finalTranscript,
           previousID
         );
-        console.log('LATEST INTERVIEW ON NEXT: ', this.interviewService.curInt);
         this.finalTranscript = '';
         this.recognition.start();
       }, 500);

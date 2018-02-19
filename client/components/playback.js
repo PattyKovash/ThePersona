@@ -1,9 +1,9 @@
 angular.module('app')
   .controller('playbackController', function (recordingService, videoUploader, interviewService) {
     // services
+    this.interviewService = interviewService;
     this.recordingService = recordingService;
     this.videoUploader = videoUploader;
-    this.interviewService = interviewService;
 
     // state properties
     this.recordedBlobs = [...this.recordingService.recording];
@@ -45,15 +45,28 @@ angular.module('app')
     this.generateVideoURL();
 
     // method that utilizes service to send video to the server
+    // once a response is received, the current interview instance
+    // is added to the DB if the user is logged in
     this.uploadVideo = (videoURL) => {
       this.videoUploader.upload(videoURL, (err, upload) => {
-        const url = upload.data.url;
-        if (url) {
+        if (err) {
+          console.log('ERROR UPLOADING VIDEO: ', err);
+        } else if (upload.data) {
+          const url = upload.data.url;
           console.log('Video successfully uploaded', upload);
           this.interviewService.updateOverall(null, 'videoUrl', url);
-          console.log('LATEST INT AFTER URL: ', this.interviewService.curInt);
         } else {
           console.log('Video could not be uploaded', err);
+        }
+        const intObj = this.interviewService.curInt;
+        console.log('LATEST INT: ', intObj);
+        if (intObj.userId) {
+          this.interviewService.addInterview(intObj)
+            .then(({ data }) => {
+              console.log('INTERVIEW ADDED: ', data);
+            });
+        } else {
+          console.log('You must be logged in to save the results.');
         }
       });
     };

@@ -11,7 +11,7 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.TEXT('long'),
       allowNull: true,
     },
-    videoURL: {
+    videoUrl: {
       type: Sequelize.TEXT
     },
     overallTones: {

@@ -1,36 +1,31 @@
 angular.module('app')
-  .service('interviewService', function ($http, broadcastService, Interview, QandA) {
+  .service('interviewService', function ($http, broadcastService, Interview, QandA, userService) {
     this.prompts = [];
     this.currentPromptsIndex = -1;
     this.currentPrompt = this.prompts[this.currentPromptsIndex];
     this.selectedPrompt = {};
     this.curInt = {};
     this.qAndA = {};
+    this.userService = userService;
+    this.userId = this.userService.userData.id;
 
     // Create new Interview instance
     this.createInterview = () => {
-      this.curInt = new Interview();
+      this.curInt = new Interview(this.userId);
       console.log('LATEST INTERVIEW:', this.curInt);
     };
 
     // Create new QandA instance
     this.createQandA = (question) => {
-      this.qAndA = new QandA(question);
+      this.qAndA = new QandA(this.userId, question);
       console.log('Q and A:', this.qAndA);
     };
 
     // Add analysis to current interview instance
     this.updateEachAnswer = (promptID, answer, analysisName, analysis) => {
-      console.log('INSIDE UPDATE EACH - ANSWER: ', answer);
-      console.log('INSIDE UPDATE EACH - ID: ', promptID);
-      console.log('INSIDE UPDATE EACH - NAME: ', analysisName);
-      console.log('INSIDE UPDATE EACH - ANALYSIS: ', analysis);
-
       const qAndA = this.curInt.qAndA[promptID];
-      console.log('INSIDE UPDATE EACH - QA: ', qAndA);
       qAndA.answer = answer;
       qAndA[analysisName] = analysis;
-      console.log('CURRENT INT: ', this.curInt);
     };
 
     // Add overall interview analysis to current interview instance
@@ -39,7 +34,6 @@ angular.module('app')
         this.curInt.fullTranscript = interview;
       }
       this.curInt[analysisName] = analysis;
-      console.log('CURRENT INT: ', this.curInt);
     };
 
     // Returns array of prompts matching input tag
@@ -56,7 +50,9 @@ angular.module('app')
 
     // Add Interview to DB
     this.addInterview = (intObj) => {
-      return $http.post('/api/interviews', { intObj });
+      return $http.post('/api/interviews', {
+        intObj: intObj
+      });
     };
 
     this.selectNumPrompts = (numPrompts, prompts) => {
