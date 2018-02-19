@@ -69,6 +69,24 @@ app.get('/api/prompts', (req, res) => {
     });
 });
 
+app.get('/api/interviews', (req, res) => {
+  const userId = req.query.userId;
+  console.log('USERID: ', userId);
+  sequelize.query('select * from interviews inner join answers on 1 = answers.interviewId;')
+    .then((interviews) => {
+      console.log('INTERVIEWS IN SERVER: ', interviews);
+    });
+  // interviewData.getUserInterviews(userId)
+  //   .then((interviews) => {
+  //     console.log('USER INTS: ', interviews);
+  //     res.status(200).json(interviews);
+  //   })
+  //   .catch((err) => {
+  //     console.log('ERROR GETTING INTS: ', err);
+  //     res.status(500).send(err);
+  //   });
+});
+
 app.post('/api/ibmtone', (req, res) => {
   toneAnalyzer(req.body.data.text)
     .then((tone) => {

@@ -29,3 +29,26 @@ exports.bulkAnswers = (intId, answers) => {
     exports.addAnswers(intId, answer[1]);
   });
 };
+
+exports.matchAnswers = (interviewId) => {
+  return db.Answer.findAll({
+    where: {
+      interviewId: interviewId
+    }
+  });
+};
+
+exports.getUserInterviews = (userId) => {
+  return db.Interview.findAll({
+    where: {
+      userId: userId
+    }
+  })
+    .then((interviews) => {
+      console.log('DB INTERVIEWS: ', interviews);
+      return bluebird.mapSeries(interviews, (interview) => {
+        exports.matchAnswers(interview.dataValues.id);
+      });
+    });
+
+};

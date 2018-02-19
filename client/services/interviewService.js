@@ -55,6 +55,15 @@ angular.module('app')
       });
     };
 
+    // Get interviews of user
+    this.getInterviews = (userId) => {
+      return $http.get('/api/interviews', {
+        params: {
+          userId: userId
+        }
+      });
+    };
+
     this.selectNumPrompts = (numPrompts, prompts) => {
       const len = prompts.length;
       const dupPrompts = prompts.slice();

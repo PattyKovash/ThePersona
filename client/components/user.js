@@ -1,14 +1,24 @@
 angular
   .module('app')
-  .controller('userCtrl', function($location, userService, $scope) {
+  .controller('userCtrl', function($location, userService, interviewService, $scope) {
     this.userService = userService;
     this.isLoggedIn = this.userService.isLoggedIn;
     this.userData = this.userService.userData;
+    this.interviewService = interviewService;
 
     $scope.$on('loggedIn', () => {
       this.isLoggedIn = this.userService.isLoggedIn;
       this.userData = this.userService.userData;
     });
+
+    this.getInterviews = () => {
+      this.interviewService.getInterviews(this.userData.id)
+        .then(({ data }) => {
+          console.log(data);
+          this.interviews = data;
+          console.log('USER INTERVIEWS IN CLIENT: ', this.interviews);
+        });
+    };
 
     this.userVideos = [
       {
@@ -43,97 +53,97 @@ angular
       }
     ];
 
-    this.userAnswers = [
-      {
-        id: 1,
-        response:
-          'My favorite data structure is a hash table because of its constant time insertion and lookup.',
-        prompt: 'What is your favorite data structure and why?',
-        toneAnalysis: {
-          tones: [
-            {
-              score: 0.576521,
-              tone_id: 'confident',
-              tone_name: 'confident'
-            },
-            {
-              score: 0.829888,
-              tone_id: 'analytical',
-              tone_name: 'Analytical'
-            }
-          ]
-        },
-        interviewId: 1,
-        createdAt: '2018-02-01 13:59:55'
-      },
-      {
-        id: 2,
-        response:
-          'Javascript is the de facto language of front end development. most engineers have had some interaction with it regardless of role. its versatility also allows for fullstack development in one language',
-        prompt: 'Why did you choose to learn Javascript over another language?',
-        toneAnalysis: {
-          tones: [
-            {
-              score: 0.915245,
-              tone_id: 'confident',
-              tone_name: 'Confident'
-            },
-            {
-              score: 0.829888,
-              tone_id: 'joy',
-              tone_name: 'Joy'
-            }
-          ]
-        },
-        interviewId: 1,
-        createdAt: '2018-02-01 14:02:54'
-      },
-      {
-        id: 10,
-        response:
-          'Hashtables because of database operation optimizations and versatility objects are life!',
-        prompt: 'What is your favorite data structure and why?',
-        toneAnalysis: {
-          tones: [
-            {
-              score: 0.753246,
-              tone_id: 'confident',
-              tone_name: 'confident'
-            },
-            {
-              score: 0.832146,
-              tone_id: 'analytical',
-              tone_name: 'Analytical'
-            }
-          ]
-        },
-        interviewId: 2,
-        createdAt: '2018-02-04 10:30:55'
-      },
-      {
-        id: 11,
-        response:
-          'Both call and apply are used to bind the this parameter to the context passed in as the first argument. Call takes individual arguments after the first argument, and apply takes an array of arguments after the first argument.',
-        prompt:
-          'What is the difference between call and apply? What are their purposes?',
-        toneAnalysis: {
-          tones: [
-            {
-              score: 0.854432,
-              tone_id: 'confident',
-              tone_name: 'confident'
-            },
-            {
-              score: 0.732145,
-              tone_id: 'analytical',
-              tone_name: 'Analytical'
-            }
-          ]
-        },
-        interviewId: 2,
-        createdAt: '2018-02-04 10:32:55'
-      }
-    ];
+    // this.userAnswers = [
+    //   {
+    //     id: 1,
+    //     response:
+    //       'My favorite data structure is a hash table because of its constant time insertion and lookup.',
+    //     prompt: 'What is your favorite data structure and why?',
+    //     toneAnalysis: {
+    //       tones: [
+    //         {
+    //           score: 0.576521,
+    //           tone_id: 'confident',
+    //           tone_name: 'confident'
+    //         },
+    //         {
+    //           score: 0.829888,
+    //           tone_id: 'analytical',
+    //           tone_name: 'Analytical'
+    //         }
+    //       ]
+    //     },
+    //     interviewId: 1,
+    //     createdAt: '2018-02-01 13:59:55'
+    //   },
+    //   {
+    //     id: 2,
+    //     response:
+    //       'Javascript is the de facto language of front end development. most engineers have had some interaction with it regardless of role. its versatility also allows for fullstack development in one language',
+    //     prompt: 'Why did you choose to learn Javascript over another language?',
+    //     toneAnalysis: {
+    //       tones: [
+    //         {
+    //           score: 0.915245,
+    //           tone_id: 'confident',
+    //           tone_name: 'Confident'
+    //         },
+    //         {
+    //           score: 0.829888,
+    //           tone_id: 'joy',
+    //           tone_name: 'Joy'
+    //         }
+    //       ]
+    //     },
+    //     interviewId: 1,
+    //     createdAt: '2018-02-01 14:02:54'
+    //   },
+    //   {
+    //     id: 10,
+    //     response:
+    //       'Hashtables because of database operation optimizations and versatility objects are life!',
+    //     prompt: 'What is your favorite data structure and why?',
+    //     toneAnalysis: {
+    //       tones: [
+    //         {
+    //           score: 0.753246,
+    //           tone_id: 'confident',
+    //           tone_name: 'confident'
+    //         },
+    //         {
+    //           score: 0.832146,
+    //           tone_id: 'analytical',
+    //           tone_name: 'Analytical'
+    //         }
+    //       ]
+    //     },
+    //     interviewId: 2,
+    //     createdAt: '2018-02-04 10:30:55'
+    //   },
+    //   {
+    //     id: 11,
+    //     response:
+    //       'Both call and apply are used to bind the this parameter to the context passed in as the first argument. Call takes individual arguments after the first argument, and apply takes an array of arguments after the first argument.',
+    //     prompt:
+    //       'What is the difference between call and apply? What are their purposes?',
+    //     toneAnalysis: {
+    //       tones: [
+    //         {
+    //           score: 0.854432,
+    //           tone_id: 'confident',
+    //           tone_name: 'confident'
+    //         },
+    //         {
+    //           score: 0.732145,
+    //           tone_id: 'analytical',
+    //           tone_name: 'Analytical'
+    //         }
+    //       ]
+    //     },
+    //     interviewId: 2,
+    //     createdAt: '2018-02-04 10:32:55'
+    //   }
+    // ];
 
     this.analysis = [
       {
@@ -198,7 +208,9 @@ angular
 
     this.init = () => {
       this.userRemoveActive;
+      this.getInterviews();
     };
+    this.init();
   })
   .component('user', {
     controller: 'userCtrl',
