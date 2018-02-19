@@ -208,7 +208,7 @@ angular
 
     this.init = () => {
       this.userRemoveActive;
-      this.getInterviews();
+      // this.getInterviews();
     };
     this.init();
   })
