@@ -7,12 +7,24 @@ module.exports = (sequelize, Sequelize) => {
       primaryKey: true,
       autoIncrement: true,
     },
-    response: {
+    fullTranscript: {
       type: Sequelize.TEXT('long'),
-      allowNull: false,
+      allowNull: true,
     },
     videoURL: {
       type: Sequelize.TEXT
+    },
+    overallTones: {
+      type: Sequelize.JSON,
+      allowNull: true
+    },
+    overallPersonality: {
+      type: Sequelize.JSON,
+      allowNull: true
+    },
+    overallWords: {
+      type: Sequelize.JSON,
+      allowNull: true
     },
     createdAt: Sequelize.DATE,
     updatedAt: Sequelize.DATE

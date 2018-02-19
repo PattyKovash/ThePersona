@@ -19,6 +19,7 @@ angular.module('app')
       console.log('Q and A:', this.qAndA);
     };
 
+    // Add analysis to current interview instance
     this.updateEachAnswer = (promptID, answer, analysisName, analysis) => {
       console.log('INSIDE UPDATE EACH - ANSWER: ', answer);
       console.log('INSIDE UPDATE EACH - ID: ', promptID);
@@ -32,6 +33,7 @@ angular.module('app')
       console.log('CURRENT INT: ', this.curInt);
     };
 
+    // Add overall interview analysis to current interview instance
     this.updateOverall = (interview, analysisName, analysis) => {
       if (interview) {
         this.curInt.fullTranscript = interview;
@@ -50,6 +52,11 @@ angular.module('app')
           tags: tag
         }
       });
+    };
+
+    // Add Interview to DB
+    this.addInterview = (intObj) => {
+      return $http.post('/api/interviews', { intObj });
     };
 
     this.selectNumPrompts = (numPrompts, prompts) => {

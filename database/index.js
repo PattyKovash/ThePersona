@@ -53,11 +53,11 @@ Answer.belongsTo(Interview, {
   onDelete: `CASCADE`
 });
 
-Prompt.belongsTo(User, {
-  targetKey: `id`,
-  constraints: false,
-  onDelete: `CASCADE`
-});
+// Prompt.belongsTo(User, {
+//   targetKey: `id`,
+//   constraints: false,
+//   onDelete: `CASCADE`
+// });
 
 Interview.belongsTo(User, {
   targetKey: `id`,

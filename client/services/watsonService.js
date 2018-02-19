@@ -70,6 +70,13 @@ angular.module('app')
         .then(() => {
           console.log('FINAL INT OBJ', this.interviewService.curInt);
           broadcastService.send('analysis Done');
+          return this.interviewService.addInterview(this.interviewService.curInt)
+            .then(({ data }) => {
+              console.log('ADDED INTERVIEW: ', data);
+            })
+            .catch(({ data }) => {
+              console.log('ERROR ADDING INTERVIEW: ', data);
+            });
         })
         .catch((err) => {
           console.log('ERROR IN ANALYZE ANSWER: ', err);
