@@ -11,6 +11,18 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.TEXT('long'),
       allowNull: false,
     },
+    toneAnalysis: {
+      type: Sequelize.JSON,
+      allowNull: true
+    },
+    personalityAnalysis: {
+      type: Sequelize.JSON,
+      allowNull: true
+    },
+    wordAnalysis: {
+      type: Sequelize.JSON,
+      allowNull: true
+    },
     createdAt: Sequelize.DATE,
     updatedAt: Sequelize.DATE
   });

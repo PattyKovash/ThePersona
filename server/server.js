@@ -110,7 +110,12 @@ app.post('/api/interviews', (req, res) => {
   const intObj = req.body.intObj;
   interviewData.addInterview(intObj)
     .then((interview) => {
-      res.status(200).json(interview);
+      const intId = interview.dataValues.id;
+      const qAndA = Object.entries(intObj.qAndA);
+      interviewData.bulkAnswers(intId, qAndA)
+        .then(() => {
+          res.status(200).json(interview);
+        });
     })
     .catch((err) => {
       res.status(500).send(err);
