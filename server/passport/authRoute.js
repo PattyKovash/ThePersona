@@ -36,7 +36,7 @@ module.exports = function (app, passport) {
   passport.use(new FacebookStrategy({ // travis is getting it from the .travis.yml so it's probably looking for it in there
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: 'http://localhost:3000/auth/facebook/callback',
+    callbackURL: '/auth/facebook/callback',
     profileFields: ['id', 'displayName', 'photos', 'email']
   },
   (accessToken, refreshToken, profile, done) => {
@@ -66,7 +66,7 @@ module.exports = function (app, passport) {
   passport.use(new GoogleStrategy({
     clientID: process.env.googleID,
     clientSecret: process.env.googleSECRET,
-    callbackURL: 'http://localhost:3000/auth/google/callback'
+    callbackURL: '/auth/google/callback'
   },
   (accessToken, refreshToken, profile, done) => {
     User.find({ where: { email: profile.emails[0].value } })
